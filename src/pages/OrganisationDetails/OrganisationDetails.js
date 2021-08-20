@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 
 // Components from MUI
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -82,6 +81,10 @@ const OrgDetails = () => {
   const [cybInsuranceError, setCybInsuranceError] = useState(false)
   const [itModelsError, setItModelsError] = useState(false)
 
+  const listValue = ["orgName", "regAddress", "companyType", "yearOI", "sufCyberAttack", "attackDetails", "insuranceDetails", "cybInsurance", "itModels"];
+  const listHook = [orgName, regAddress, companyType, yearOI, sufCyberAttack, attackDetails, insuranceDetails, cybInsurance, itModels];
+  const listSetHook = [setOrgName, setRegAddress, setCompanyType, setYearOI, setSufCyberAttack, setAttackDetails, setInsuranceDetails, setCybInsurance, setItModels];
+
   useEffect(() => {
     setOrgName(getLS("orgName"));
     setRegAddress(getLS("regAddress"));
@@ -95,28 +98,17 @@ const OrgDetails = () => {
   }, []);
 
 
-  handleNull(orgName, setOrgName);
-  handleNull(regAddress, setRegAddress);
-  handleNull(companyType, setCompanyType);
-  handleNull(yearOI, setYearOI);
-  handleNull(sufCyberAttack, setSufCyberAttack);
-  handleNull(attackDetails, setAttackDetails);
-  handleNull(insuranceDetails, setInsuranceDetails);
-  handleNull(cybInsurance, setCybInsurance);
-  handleNull(itModels, setItModels);
+  for(let i = 0; i < listHook.length && listSetHook ; i++) {
+    console.log(listHook[i], listSetHook[i])
+    handleNull(listHook[i], listSetHook[i])
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    setLS("orgName", orgName);
-    setLS("regAddress", regAddress);
-    setLS("companyType", companyType);
-    setLS("yearOI", yearOI);
-    setLS("sufCyberAttack", sufCyberAttack);
-    setLS("attackDetails", attackDetails);
-    setLS("insuranceDetails", insuranceDetails);
-    setLS("cybInsurance", cybInsurance);
-    setLS("itModels", itModels);
+    for(let i = 0; i < listValue.length && listHook ; i++) {
+      setLS(listValue[i], listHook[i])
+    }
 
     handleSubmits(orgName, setOrgNameError);
     handleSubmits(regAddress, setRegAddressError);
@@ -132,15 +124,9 @@ const OrgDetails = () => {
   const handleSave = () => {
     console.log(itModels)
 
-    setLS("orgName", orgName);
-    setLS("regAddress", regAddress);
-    setLS("companyType", companyType);
-    setLS("yearOI", yearOI);
-    setLS("sufCyberAttack", sufCyberAttack);
-    setLS("attackDetails", attackDetails);
-    setLS("insuranceDetails", insuranceDetails);
-    setLS("cybInsurance", cybInsurance);
-    setLS("itModels", itModels);
+    for(let i = 0; i < listValue.length && listHook ; i++) {
+      setLS(listValue[i], listHook[i])
+    }
   }
 
   const tabNextButton = () => {
