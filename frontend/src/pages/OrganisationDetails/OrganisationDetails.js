@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core';
+import { ButtonBase, makeStyles } from '@material-ui/core';
 
 // Components from MUI
 import Container from '@material-ui/core/Container';
@@ -99,7 +99,6 @@ const OrgDetails = () => {
 
 
   for(let i = 0; i < listHook.length && listSetHook ; i++) {
-    console.log(listHook[i], listSetHook[i])
     handleNull(listHook[i], listSetHook[i])
   }
 
@@ -170,14 +169,14 @@ const OrgDetails = () => {
           {TextFields(classes.field, setCompanyType, companyTypeError, "Company Type", "secondary", "text", "true", "true", "companyType", false)}
           {TextFields(classes.field, setYearOI, yearOIError, "Year Of Incorporation", "secondary", "date", "true", "yearOI", true)}
 
-          {Selects("Have you suffered a cyber attack which has affeted operations?", classes.label, setSufCyberAttack, "sufCyberAttack", true, "secondary")}
+          {Selects("Have you suffered a cyber attack which has affeted operations?", classes.label, setSufCyberAttack, "sufCyberAttack", true, "secondary")} 
           {ConditionalText(sufCyberAttack, 'yes', classes.fields, setAttackDetails, "true", attackDetailsError, "attackDetails")}
           <br/>
 
           {Selects("Do you have cyber insurance cover?", classes.label, setCybInsurance, "cybInsurance", true, "secondary")}
           {ConditionalText(cybInsurance, 'yes', classes.field, setInsuranceDetails, "true", insuranceDetailsError, "insuranceDetails")}
         
-          {SelectsCustom("Which of these IT Models do you use?", classes.label, setItModels, "itModels", true, "secondary", "byod", "id", "mm", "Bring Your Own Device", "Issued Devices", "Mixed Model" )}
+          {SelectsCustom("Which of these IT Models do you use?", classes.label, setItModels, "itModels", true, "secondary", "byod", "id", "mm", "Bring Your Own Device", "Issued Devices", "Mixed Model" )} 
 
           {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
           {Buttons(handleSave, classes.bttn, "primary", <SaveOutlinedIcon/>, "Save")}
