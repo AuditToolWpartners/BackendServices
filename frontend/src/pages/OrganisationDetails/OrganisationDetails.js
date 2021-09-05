@@ -181,7 +181,7 @@ const OrgDetails = () => {
           {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
           {Buttons(handleSave, classes.bttn, "primary", <SaveOutlinedIcon/>, "Save")}
           <br/>
-        </form>
+        </form> 
     </TabPanel>
     <TabPanel value={tabValue} index={1}>
         <TabTwo/>

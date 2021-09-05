@@ -1,0 +1,12 @@
+.header{
+    font-family: 'Libre Baskerville', serif;
+    color: #fff
+}
+
+.loginPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
