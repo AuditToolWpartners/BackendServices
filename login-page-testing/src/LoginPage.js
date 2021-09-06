@@ -22,16 +22,7 @@ const submit = (username, password) => {
         password: password
     }
 
-    const json = JSON.stringify(data);
-
-    const requestOptions = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-    }
-
-    console.log(json);
-    axios.defaults.baseURL = 'http://192.168.1.218:8000';
-    axios.post('http://192.168.1.218:8000/auth/createuser/', data, requestOptions)
+    axios.post('http://192.168.1.218:8000/auth/createuser/', data)
     .then(function (response) {
         console.log(response);
     })
