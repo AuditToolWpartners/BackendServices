@@ -1,3 +1,4 @@
+from calendar import setfirstweekday
 from django.db.models.expressions import Value
 from django.http import response
 from django.http.response import HttpResponseBadRequest
@@ -33,8 +34,6 @@ class createuser(APIView):
             password = serialzer.data.get('password')
             print('valid')
             user = User.objects.create_user(username=username, password=password)
-
-            print('pedo')
             return HttpResponse("USER CREATED", content_type="text/plain")
         else:
             return HttpResponse("USER NOT CREATED", content_type="text/plain", status=400)
@@ -49,7 +48,6 @@ class loginuser(APIView):
             username = serializer.data.get('username')
             password = serializer.data.get('password')
             user = authenticate(request, username=username, password=password)
-            print(user.id)
             if user is not None:
 
                 payload = {
@@ -63,8 +61,7 @@ class loginuser(APIView):
                 response = Response()
                 response.set_cookie(key='jwt', value=token, httponly=True)
                 response.data = {
-                    'jwt': token, #REMOVE LATER ON FOR SECURITY
-                    'UserID': user.id
+                    'jwt': token
                 }
                 return response
 
@@ -74,7 +71,7 @@ class loginuser(APIView):
         else:
             return HttpResponse("BAD DATA", content_type="text/plain", status=400)
 
-class Signedin(APIView):
+class signedin(APIView):
     def get(self, request):
         token = request.COOKIES.get('jwt')
         if not token:
@@ -82,9 +79,11 @@ class Signedin(APIView):
 
         try:
             data = jwt.decode(token, "secret", algorithms=["HS256"])
+            print('DECODED')
         except jwt.ExpiredSingatureError:
             return HttpResponse("EXPIRED COOKIE", content_type='text/plain', status=400)
-        user = User.objects.get(data['id'])
+        user = User.objects.get(id=data['id'])
+        return HttpResponse(f'Welcome {user.username}', content_type='text/plain',status=200)
         #Do whatever past here TEST CODE ON WIN PC
         
 

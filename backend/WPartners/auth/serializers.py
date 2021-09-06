@@ -10,6 +10,7 @@ class CreateUserSerial(serializers.ModelSerializer):
 class loginuser(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(max_length=32)
+
     
 
 
