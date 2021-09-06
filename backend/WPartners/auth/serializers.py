@@ -7,8 +7,9 @@ class CreateUserSerial(serializers.ModelSerializer):
         model = User
         fields = ('username', 'password')
 
-class LoginUser(serializers.ModelSerializer):
+class loginuser(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField(max_length=32)
+    
 
-    class Meta:
-        model = User
-        fields = ('username','password')
+
