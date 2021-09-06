@@ -1,7 +1,7 @@
 import React from 'react';
 import * as yup from 'yup';
 // CSS
-import './LoginPage.css';
+import './SignUp.css';
 
 // MaterialUI Components
 import { makeStyles } from '@material-ui/core';
@@ -59,7 +59,7 @@ const validationSchema = yup.object({
       ),
   });
 
-const LoginPage = () => {
+const SignUp = () => {
     const classes = useStyles();
     const paperStyle = { padding: '30px 20px', width: 300, margin: "20px auto" }
 
@@ -129,4 +129,4 @@ const LoginPage = () => {
 
 }
 
-export default LoginPage;
+export default SignUp;
