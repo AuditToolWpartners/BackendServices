@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import PageSelect from './pages/PageSelect';
+import SignUp from './pages/SignUp/SignUp'
 
 const theme = createTheme({
   palette: {
@@ -36,6 +37,14 @@ const App = () => {
           <Route 
             exact path="/"
             component={Home}
+          />
+          <Route
+           path="/login" 
+           component={PageSelect}
+          />
+          <Route
+           path="/signup" 
+           component={SignUp}
           />
           <Route
            path="/audit" 

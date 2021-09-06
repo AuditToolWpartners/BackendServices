@@ -2,19 +2,3 @@
     font-family: 'Libre Baskerville', serif;
     color: #000
 }
-
-.loginPage{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-}
-.form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-}

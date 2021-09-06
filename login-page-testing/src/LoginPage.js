@@ -51,10 +51,12 @@ const validationSchema = yup.object({
       .required('Email is required'),
     password: yup
       .string('Enter your password')
-      .min(8, 'Password should be of minimum 8 characters length')
       .max(32, 'Password cannot be more than 32 characters')
       .required('Password is required')
-      .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      ),
   });
 
 const LoginPage = () => {
@@ -65,17 +67,17 @@ const LoginPage = () => {
         initialValues: {
           email: '',
           password: '',
+          confirmPassword: '',
         },
         validationSchema: validationSchema,
         onSubmit: () => {
-            console.log(formik.values.email)
             submit(formik.values.email, formik.values.password)
         },
       });
 
     return(
         <div className="loginPage">
-            <form onSubmit={formik.handleSubmit} classaName="form">
+            <form onSubmit={formik.handleSubmit} className="form">
                 <Grid>
                     <Paper elevation={20} style={paperStyle}>
                         <Grid align='center'>
@@ -114,7 +116,7 @@ const LoginPage = () => {
                                 shrink: true,
                             }}
                         />
-                        <Button color="primary" variant="contained" type="submit">
+                        <Button color="primary" variant="contained" type="submit" fullWidth>
                             Sign Up
                         </Button>
                     </Paper>

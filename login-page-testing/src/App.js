@@ -1,5 +1,4 @@
 import './App.css';
-import Container from '@material-ui/core/Container'
 
 import { createTheme, ThemeProvider } from '@material-ui/core';
 
@@ -16,7 +15,7 @@ const theme = createTheme({
       main: '#00000'
     },
     background: {
-      paper: '#D8D8DF',
+      paper: '#ffff',
       default: '#252730'
     },
     text: {
@@ -36,9 +35,7 @@ const theme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Container className="d-flex align-items-center justify-content-center">
         <LoginPage/>
-      </Container>
     </ThemeProvider>
   );
 }
