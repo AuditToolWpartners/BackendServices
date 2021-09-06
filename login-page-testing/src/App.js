@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from '@material-ui/core';
 
 
 //Local Components
-import LoginPage from './LoginPage';
+import LoginPage from './LoginPage.js';
 
 const theme = createTheme({
   palette: {
@@ -13,15 +13,15 @@ const theme = createTheme({
       main: '#ff4747',
     },
     secondary: {
-      main: '#fff'
+      main: '#00000'
     },
     background: {
-      paper: '#252730',
+      paper: '#D8D8DF',
       default: '#252730'
     },
     text: {
-      primary: '#FFFF',
-      secondary: 'rgba(255, 255, 255, 0.7)'
+      primary: 'rgba(0, 0, 0, 0.7)',
+      secondary: 'rgba(0, 0, 0, 0.7)'
     },
   },
   typography: {
