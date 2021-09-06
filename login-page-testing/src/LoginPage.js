@@ -15,9 +15,10 @@ import ParticlesBg from 'particles-bg'
 // Formik Components
 import { useFormik } from 'formik';
 
-
+// Axios Declaration
 const axios = require('axios').default;
 
+// Styles
 const useStyles = makeStyles({
     field: {
         marginTop: 20,

@@ -80,6 +80,14 @@ class Signedin(APIView):
         if not token:
             return HttpResponse("BAD COOKIE", content_type="text/plain", status=400)
 
+        try:
+            data = jwt.decode(token, "secret", algorithms=["HS256"])
+        except jwt.ExpiredSingatureError:
+            return HttpResponse("EXPIRED COOKIE", content_type='text/plain', status=400)
+        user = User.objects.get(data['id'])
+        #Do whatever past here TEST CODE ON WIN PC
+        
+
 
 
 
