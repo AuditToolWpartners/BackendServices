@@ -27,18 +27,12 @@ import * as yup from 'yup';
 
 
 // Styles
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     field: {
         marginTop: 20,
         marginBottom: 20,
       },
-    alert: {
-        width: '20%',
-        '& > * + *': {
-          marginTop: theme.spacing(2),
-        },
-      },
-}));
+});
 
 const validationSchema = yup.object({ // Sign Up Validation
     email: yup
@@ -62,13 +56,15 @@ const validationSchema = yup.object({ // Sign Up Validation
   });
 
 const SignUp = () => {
+    // Style Variables
     const classes = useStyles();
     const paperStyle = { padding: '30px 20px', width: 300, margin: "150px auto" }
+    // Policy Variables
     const [state, setState] = useState({ policy: false })
     const { policy } = state;
     const error = [policy].filter((v) => v).length !== 2;
 
-    const formik = useFormik({ 
+    const formik = useFormik({ // Initializing Formik
         initialValues: {
           email: '',
           password: '',
@@ -157,7 +153,7 @@ const SignUp = () => {
                     </Grid>
             </Grid>
             </form>
-                <ParticlesBg color="#ff4747" num={200} type="cobweb" bg={true} />
+                <ParticlesBg color="#ff4747" num={200} type="cobweb" bg={true} /> {/* Handles the background */}
             </div>
 
     );
