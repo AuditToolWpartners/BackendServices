@@ -2,6 +2,7 @@
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #FFFF;
+    color: #0000;
     background: #12152b;
-  }
+    font-family: 'Roboto', sans-serif;
+    }

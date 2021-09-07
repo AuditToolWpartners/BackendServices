@@ -4,6 +4,9 @@ import { createTheme, ThemeProvider } from '@material-ui/core';
 import PageSelect from './pages/PageSelect';
 import SignUp from './pages/SignUp/SignUp'
 
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -32,6 +35,7 @@ const theme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      <ReactNotification />
       <Router>
         <Switch>
           <Route 

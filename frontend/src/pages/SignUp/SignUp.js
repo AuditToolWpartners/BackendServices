@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 // CSS
 import './SignUp.css';
 
@@ -28,12 +27,18 @@ import * as yup from 'yup';
 
 
 // Styles
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     field: {
         marginTop: 20,
         marginBottom: 20,
       },
-})
+    alert: {
+        width: '20%',
+        '& > * + *': {
+          marginTop: theme.spacing(2),
+        },
+      },
+}));
 
 const validationSchema = yup.object({ // Sign Up Validation
     email: yup
@@ -59,13 +64,11 @@ const validationSchema = yup.object({ // Sign Up Validation
 const SignUp = () => {
     const classes = useStyles();
     const paperStyle = { padding: '30px 20px', width: 300, margin: "150px auto" }
-    const [state, setState] = useState({
-        policy: false,
-    })
+    const [state, setState] = useState({ policy: false })
     const { policy } = state;
     const error = [policy].filter((v) => v).length !== 2;
 
-    const formik = useFormik({
+    const formik = useFormik({ 
         initialValues: {
           email: '',
           password: '',
@@ -87,7 +90,7 @@ const SignUp = () => {
                             <Grid align='center'>
                                 <div className="header">
                                     <h1>Sign Up</h1>
-                                    <h3>Already a member? <Link href="http://localhost3000/Login">Log in</Link></h3>
+                                    <h4>Already a member? <Link href="http://localhost3000/Login">Log In</Link></h4>
                                 </div>
                             </Grid>
                             <TextField
@@ -140,11 +143,13 @@ const SignUp = () => {
                                 <FormGroup>
                                     <FormControlLabel 
                                         control={<CheckBox checked={state.checked} onChange={formik.handleChange} name="policy"/>}
-                                        label={<h4>Do you accept our <Link href="http://localhost:3000/Privacy">Privacy policy</Link>?</h4>}
+                                        label={<div>Do you accept our <Link href="http://localhost:3000/Privacy">Privacy Policy</Link>?</div>}
+                                        labelPlacement="top"
                                     />
                                 </FormGroup>
                                 <FormHelperText>{formik.touched.policy && formik.errors.policy}</FormHelperText>
                             </FormControl>
+                            <br/>
                             <Button color="primary" variant="contained" type="submit" fullWidth>
                                 Sign Up
                             </Button>
