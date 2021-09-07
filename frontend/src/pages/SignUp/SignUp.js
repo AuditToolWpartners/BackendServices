@@ -1,21 +1,30 @@
-import React from 'react';
-import * as yup from 'yup';
+import React, { useState } from 'react';
+
+
 // CSS
 import './SignUp.css';
-import post from './post'
+
+// Local Components
+import post from './post';
 
 // MaterialUI Components
-import { makeStyles } from '@material-ui/core';
+import { Link, makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import CheckBox from '@material-ui/core/Checkbox';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
 
-import ParticlesBg from 'particles-bg'
+// Background Components
+import ParticlesBg from 'particles-bg';
 
 // Formik Components
 import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 
 // Styles
@@ -26,34 +35,7 @@ const useStyles = makeStyles({
       },
 })
 
-
-
-// const signup = (username, password) => dispatch => {
-
-//     //Headers
-//     const config = {
-//         headers: {
-//             "Content-type": "application/json"
-//         }
-//     }
-
-//     const body = JSON.stringify({ username, password })
-
-//     axios.post('http://192.168.1.218:8000/auth/login/', body, config, {withCredentials: true})
-//     .then(res => {
-//         dispatch({
-//             type: LOGIN_SUCCESS,
-//             payload: res.data
-//         })
-//     }).catch(err => {
-//         console.log(err)
-//         dispatch({
-//             type: LOGIN_FAIL
-//         })
-//     })
-// }
-
-const validationSchema = yup.object({
+const validationSchema = yup.object({ // Sign Up Validation
     email: yup
       .string('Enter your email')
       .email('Enter a valid email')
@@ -62,21 +44,33 @@ const validationSchema = yup.object({
       .string('Enter your password')
       .max(32, 'Password cannot be more than 32 characters')
       .required('Password is required')
-    //   .matches(
-    //     /^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$/,
-    //     "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
-    //   ),
+      .matches(
+        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      ),
+    confirmPassword: yup
+      .string('Confirm your password')
+      .oneOf([yup.ref('password'), null], 'Passwords must match!'),
+    
+    policy: yup.boolean()
+      .oneOf([true], "You must accept our Privacy policy."),
   });
 
 const SignUp = () => {
     const classes = useStyles();
     const paperStyle = { padding: '30px 20px', width: 300, margin: "150px auto" }
+    const [state, setState] = useState({
+        policy: false,
+    })
+    const { policy } = state;
+    const error = [policy].filter((v) => v).length !== 2;
 
     const formik = useFormik({
         initialValues: {
           email: '',
           password: '',
           confirmPassword: '',
+          policy: false,
         },
         validationSchema: validationSchema,
         onSubmit: () => {
@@ -93,7 +87,7 @@ const SignUp = () => {
                             <Grid align='center'>
                                 <div className="header">
                                     <h1>Sign Up</h1>
-                                    <h3>Already a member?</h3>
+                                    <h3>Already a member? <Link href="http://localhost3000/Login">Log in</Link></h3>
                                 </div>
                             </Grid>
                             <TextField
@@ -126,6 +120,31 @@ const SignUp = () => {
                                     shrink: true,
                                 }}
                             />
+
+                            <TextField 
+                                fullWidth
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                label="Confirm Password"
+                                type="password"
+                                value={formik.values.confirmPassword}
+                                onChange={formik.handleChange}
+                                error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+                                helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+                                className={classes.field}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                            <FormControl error={error}>
+                                <FormGroup>
+                                    <FormControlLabel 
+                                        control={<CheckBox checked={state.checked} onChange={formik.handleChange} name="policy"/>}
+                                        label={<h4>Do you accept our <Link href="http://localhost:3000/Privacy">Privacy policy</Link>?</h4>}
+                                    />
+                                </FormGroup>
+                                <FormHelperText>{formik.touched.policy && formik.errors.policy}</FormHelperText>
+                            </FormControl>
                             <Button color="primary" variant="contained" type="submit" fullWidth>
                                 Sign Up
                             </Button>

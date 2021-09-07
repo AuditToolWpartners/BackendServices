@@ -23,4 +23,4 @@ const post = (username, password) => {
     })
 }
 
-export default post
+export default post 
