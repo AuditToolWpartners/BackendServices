@@ -25,7 +25,6 @@ import ParticlesBg from 'particles-bg';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-
 // Styles
 const useStyles = makeStyles({
     field: {
@@ -58,7 +57,7 @@ const validationSchema = yup.object({ // Sign Up Validation
 const SignUp = () => {
     // Style Variables
     const classes = useStyles();
-    const paperStyle = { padding: '30px 20px', width: 300, margin: "150px auto" }
+    const paperStyle = { padding: '30px 20px', width: 300, margin: "50px auto" }
     // Policy Variables
     const [state, setState] = useState({ policy: false })
     const { policy } = state;
