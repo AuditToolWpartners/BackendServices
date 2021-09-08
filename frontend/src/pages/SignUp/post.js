@@ -54,11 +54,11 @@ const post = (username, password) => {
     }
 
 
-    axios.post('http://192.168.227.18:8000/auth/login/', body, config, {withCredentials: true})
+    axios.get('http://192.168.227.18:8000/auth/singedin/', body, config, {withCredentials: true})
     .then(res => {
         console.log(res)
         created()
-        Cookies.set('access_token', res.data['jwt'])
+        Cookies.set('jwt', res.data['jwt'], { sameSite: 'lax' });
     }).catch(function (error) {
         console.log(error)
         failed()
