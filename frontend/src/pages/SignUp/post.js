@@ -4,8 +4,10 @@ import axios from 'axios';
 import { store } from 'react-notifications-component';
 import 'animate.css/animate.min.css';
 
+// Cookies
+import Cookies from 'js-cookie'
+
 const post = (username, password) => {
-    console.log('fired')
 
     //Headers
     const config = {
@@ -52,13 +54,13 @@ const post = (username, password) => {
     }
 
 
-    axios.post('http://192.168.1.218:8000/auth/login/', body, config, {withCredentials: true})
+    axios.post('http://192.168.227.18:8000/auth/login/', body, config, {withCredentials: true})
     .then(res => {
         console.log(res)
         created()
-
-    }).catch(err => {
-        console.log(err)
+        Cookies.set('access_token', res.data['jwt'])
+    }).catch(function (error) {
+        console.log(error)
         failed()
     })
 }

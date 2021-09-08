@@ -1,5 +1,5 @@
 const handleNull = (hook, setVariable) => {
-    if (hook == 'Null') {
+    if (hook === 'null') {
         setVariable('')
     }
 }

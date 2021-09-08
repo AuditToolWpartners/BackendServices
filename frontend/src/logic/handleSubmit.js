@@ -1,7 +1,7 @@
 const handleSubmits = (hook, setError) => {
     setError(false)
 
-    if(hook == '') {
+    if(hook === '') {
         setError(true)
     }
 

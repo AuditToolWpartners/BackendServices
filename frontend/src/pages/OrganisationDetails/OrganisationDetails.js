@@ -95,19 +95,21 @@ const OrgDetails = () => {
     setInsuranceDetails(getLS("insuranceDetails"))
     setCybInsurance(getLS("cybInsurance"))
     setItModels(getLS("itModels"))
-  }, []);
 
-
-  for(let i = 0; i < listHook.length && listSetHook ; i++) {
-    handleNull(listHook[i], listSetHook[i])
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
+    for(let i = 0; i < listHook.length && listSetHook ; i++) {
+      handleNull(listHook[i], listSetHook[i])
+    }
 
     for(let i = 0; i < listValue.length && listHook ; i++) {
       setLS(listValue[i], listHook[i])
     }
+  }, []);
+
+
+  
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
     handleSubmits(orgName, setOrgNameError);
     handleSubmits(regAddress, setRegAddressError);
@@ -151,7 +153,7 @@ const OrgDetails = () => {
 
   return (
     <Container>
-        <Tabs value={tabValue} onChange={HandleTabChange} variant="scrollable">
+        <Tabs value={tabValue} onChange={HandleTabChange} textColor="primary" variant="scrollable">
           <Tab label="1.1" {...a11yProps(0)} />
           <Tab label="1.2" {...a11yProps(1)} />
           <Tab label="1.3" {...a11yProps(3)} />
@@ -164,17 +166,17 @@ const OrgDetails = () => {
         </Tabs>
       <TabPanel value={tabValue} index={0}>
         <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-          {TextFields(classes.field, setOrgName, orgNameError, "Organisaton Name", "secondary", "text", "true", "true", "orgName", false)}
-          {TextFields(classes.field, setRegAddress, regAddressError, "Registered Address", "secondary", "text", "true", "true", "regAddress", false)}      
-          {TextFields(classes.field, setCompanyType, companyTypeError, "Company Type", "secondary", "text", "true", "true", "companyType", false)}
-          {TextFields(classes.field, setYearOI, yearOIError, "Year Of Incorporation", "secondary", "date", "true", "yearOI", true)}
+          {TextFields(classes.field, setOrgName, orgNameError, "Organisaton Name", "secondary", "text", "true", true, "orgName", false)}
+          {TextFields(classes.field, setRegAddress, regAddressError, "Registered Address", "secondary", "text", true, "true", "regAddress", false)}      
+          {TextFields(classes.field, setCompanyType, companyTypeError, "Company Type", "secondary", "text", "true", true, "companyType", false)}
+          {TextFields(classes.field, setYearOI, yearOIError, "Year Of Incorporation", "secondary", "date", true, "yearOI", true)}
 
           {Selects("Have you suffered a cyber attack which has affeted operations?", classes.label, setSufCyberAttack, "sufCyberAttack", true, "secondary")} 
-          {ConditionalText(sufCyberAttack, 'yes', classes.fields, setAttackDetails, "true", attackDetailsError, "attackDetails")}
+          {ConditionalText(sufCyberAttack, 'yes', classes.fields, setAttackDetails, true, attackDetailsError, "attackDetails")}
           <br/>
 
           {Selects("Do you have cyber insurance cover?", classes.label, setCybInsurance, "cybInsurance", true, "secondary")}
-          {ConditionalText(cybInsurance, 'yes', classes.field, setInsuranceDetails, "true", insuranceDetailsError, "insuranceDetails")}
+          {ConditionalText(cybInsurance, 'yes', classes.field, setInsuranceDetails, true, insuranceDetailsError, "insuranceDetails")}
         
           {SelectsCustom("Which of these IT Models do you use?", classes.label, setItModels, "itModels", true, "secondary", "byod", "id", "mm", "Bring Your Own Device", "Issued Devices", "Mixed Model" )} 
 

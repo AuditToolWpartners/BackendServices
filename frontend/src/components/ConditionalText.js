@@ -8,7 +8,7 @@ import Grow from '@material-ui/core/Grow';
 
 const ConditionalText = (condition, looking, style, setVariable, required, variableError, lsVariable) => {
 
-    if(condition == looking) {
+    if(condition === looking) {
       return (
         <Grow in="true" out="true">
         <TextField
