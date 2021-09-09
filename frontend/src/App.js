@@ -6,6 +6,7 @@ import SignUp from './pages/SignUp/SignUp'
 
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
+import LogIn from './pages/LogIn/LogIn';
 
 const theme = createTheme({
   palette: {
@@ -44,7 +45,7 @@ const App = () => {
           />
           <Route
            path="/login" 
-           component={PageSelect}
+           component={LogIn}
           />
           <Route
            path="/signup" 

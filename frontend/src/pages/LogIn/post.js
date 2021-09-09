@@ -8,7 +8,6 @@ import 'animate.css/animate.min.css';
 import Cookies from 'js-cookie'
 
 const post = (username, password) => {
-
     //Headers
     const config = {
         headers: {
@@ -21,10 +20,10 @@ const post = (username, password) => {
         password: password
     }
 
-    const created = () => {
+    const loggedIn = () => {
         store.addNotification({
             title: "Success!",
-            message: "You've successfully created your account!",
+            message: "You've successfully logged into your account!",
             type: "success",
             container: "top-left",
             insert: "top",
@@ -40,7 +39,7 @@ const post = (username, password) => {
     const failed = () => {
         store.addNotification({
             title: "Oops!",
-            message: "Looks like you've already got an account, try logging in!",
+            message: "Looks like you've supplied a wrong username or password, if you do not have an account you can create one!",
             type: "danger",
             container: "top-left",
             insert: "top",
@@ -57,11 +56,18 @@ const post = (username, password) => {
     axios.post('http://192.168.1.218:8000/auth/login/', body, config, {withCredentials: true})
     .then(res => {
         console.log(res)
-        created()
+        loggedIn()
         Cookies.set('jwt', res.data['jwt'], { sameSite: 'lax' });
+        axios.get('http://192.168.1.218:8000/auth/signedin/', {withCredentials: true})
+        .then(res =>{
+            console.log(res);
+        }).catch(function (error) {
+            console.log(error);
+            failed();
+            })
     }).catch(function (error) {
-        console.log(error)
-        failed()
+        console.log(error);
+        failed();
     })
 }
 
