@@ -7,7 +7,8 @@ import 'animate.css/animate.min.css';
 // Cookies
 import Cookies from 'js-cookie'
 
-const post = (username, password) => {
+const post = (username, password, auth) => {
+    axios.defaults.withCredentials = true
     //Headers
     const config = {
         headers: {
@@ -52,21 +53,40 @@ const post = (username, password) => {
           });
     }
 
+    const welcome = (username) => {
+        store.addNotification({
+            title: "Welcome!",
+            message: username,
+            type: "success",
+            container: "top-left",
+            insert: "top",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 10000,
+              onScreen: true
+            }
+          });
+    }
 
-    axios.post('http://localhost:8000/auth/login/', body, config, {withCredentials: true})
+
+    axios.post('http://192.168.227.18:8000/auth/login/', body, config, {withCredentials: false})
     .then(res => {
-        console.log(res)
-        loggedIn()
+        console.log(res);
+        loggedIn();
         Cookies.set('jwt', res.data['jwt'], { sameSite: 'lax' });
-        axios.get('http://localhost:8000/auth/signedin/', {withCredentials: true})
+        axios.get('http://192.168.227.18:8000/auth/signedin/')
         .then(res =>{
             console.log(res);
+            auth(true);
+            window.location.href="/audit"
         }).catch(function (error) {
             console.log(error);
             failed();
             })
     }).catch(function (error) {
         console.log(error);
+        Cookies.remove('jwt');
         failed();
     })
 }

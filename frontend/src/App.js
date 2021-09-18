@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import PageSelect from './pages/PageSelect';
@@ -7,6 +8,11 @@ import SignUp from './pages/SignUp/SignUp'
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import LogIn from './pages/LogIn/LogIn';
+import axios from 'axios';
+import Cookies from 'js-cookie'
+
+import AuthApi from './AuthApi'
+
 
 const theme = createTheme({
   palette: {
@@ -34,10 +40,38 @@ const theme = createTheme({
 });
 
 const App = () => {
+  const [auth, setAuth] = React.useState(false);
+  axios.defaults.withCredentials = true;
+  const readCookie = () => {
+    const user = Cookies.get("jwt");
+    if (user) {
+      axios.get('http://192.168.227.18:8000/auth/signedin/')
+      .then(res =>{
+        console.log("true")
+        console.log(res)
+        setAuth(true)
+        console.log(auth)
+      }).catch(function (error) {
+        console.log(error)
+        setAuth(false);
+        console.log(auth)
+        })
+    }
+  }
+  React.useEffect(() => {
+    readCookie();
+  }, [])
+
+
   return (
     <ThemeProvider theme={theme}>
       <ReactNotification />
-      <Router>
+      <AuthApi.Provider value={{auth, setAuth}}>
+        <Router>
+          <Routes/>
+        </Router>
+      </AuthApi.Provider>
+      {/* <Router>
         <Switch>
           <Route 
             exact path="/"
@@ -56,9 +90,47 @@ const App = () => {
            component={PageSelect}
           />
         </Switch>
-      </Router>
+      </Router> */}
     </ThemeProvider>
   );
+}
+
+const Routes = () => {
+  const Auth = React.useContext(AuthApi);
+  return(
+    <Switch>
+      <ProtectedLogin path="/login" component={LogIn} auth={Auth.auth} />
+      <ProtectedRoute path="/audit" component={PageSelect} auth={Auth.auth} />
+    </Switch>
+  )
+}
+
+const ProtectedRoute = ({auth, component:Component, ...rest}) => {
+  return(
+    <Route
+    {...rest}
+    render = {()=> auth? (
+      <Component />
+    ):(
+        <Redirect to="/login" />
+      )
+  }
+  />
+  )
+}
+
+const ProtectedLogin = ({auth, component:Component, ...rest}) => {
+  return(
+    <Route
+    {...rest}
+    render = {()=> !auth? (
+      <Component />
+    ):(
+        <Redirect to="/audit" />
+      )
+  }
+  />
+  )
 }
 
 export default App;

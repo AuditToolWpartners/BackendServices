@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router';
 
 // CSS
 import './LogIn.css';
@@ -19,6 +20,8 @@ import ParticlesBg from 'particles-bg';
 // Formik Components
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+
+import AuthApi from '../../AuthApi';
 
 // Styles
 const useStyles = makeStyles({
@@ -44,6 +47,9 @@ const LogIn = () => {
     const classes = useStyles();
     const paperStyle = { padding: '30px 20px', width: 300, margin: "50px auto" }
 
+    const [auth, setAuth] = useState(false)
+    const Auth = React.useContext(AuthApi);
+
     const formik = useFormik({ // Initializing Formik
         initialValues: {
           email: '',
@@ -51,9 +57,8 @@ const LogIn = () => {
         },
         validationSchema: validationSchema,
         onSubmit: () => {
-            console.log('clicked')
-            post(formik.values.email, formik.values.password)
-        },
+            post(formik.values.email, formik.values.password, setAuth);
+            },
       });
 
     return(
@@ -65,7 +70,7 @@ const LogIn = () => {
                             <Grid align='center'>
                                 <div className="header">
                                     <h1>Log In</h1>
-                                    <h4>Don't have an account? <Link href="http://localhost3000/SignUp">Sign Up</Link></h4>
+                                    <h4>Don't have an account? <Link href="http://localhost:3000/SignUp">Sign Up</Link></h4>
                                 </div>
                             </Grid>
                             <TextField
