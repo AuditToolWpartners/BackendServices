@@ -53,12 +53,12 @@ const post = (username, password) => {
     }
 
 
-    axios.post('http://192.168.1.218:8000/auth/login/', body, config, {withCredentials: true})
+    axios.post('http://localhost:8000/auth/login/', body, config, {withCredentials: true})
     .then(res => {
         console.log(res)
         loggedIn()
         Cookies.set('jwt', res.data['jwt'], { sameSite: 'lax' });
-        axios.get('http://192.168.1.218:8000/auth/signedin/', {withCredentials: true})
+        axios.get('http://localhost:8000/auth/signedin/', {withCredentials: true})
         .then(res =>{
             console.log(res);
         }).catch(function (error) {
