@@ -85,7 +85,7 @@ const SignUp = () => {
                             <Grid align='center'>
                                 <div className="header">
                                     <h1>Sign Up</h1>
-                                    <h4>Already a member? <Link href="http://localhost3000/Login">Log In</Link></h4>
+                                    <h4>Already a member? <Link href="http://localhost:3000/Login">Log In</Link></h4>
                                 </div>
                             </Grid>
                             <TextField
