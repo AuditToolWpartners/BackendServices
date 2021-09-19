@@ -13,4 +13,12 @@ class loginuser(serializers.Serializer):
 
     
 
+class Token(serializers.Serializer):
+    token = serializers.CharField()
 
+class UserDetails(serializers.ModelSerializer):
+    class Meta():
+        model = User
+        fields = '__all__'
+
+    

@@ -7,5 +7,5 @@ urlpatterns = [
     path('createuser/', createuser.as_view()),
     path('login/', loginuser.as_view()),
     path('view/', Viewthemall.as_view()),
-    path('singedin/',signedin.as_view())
+    path('signedin/',signedin.as_view())
 ]
