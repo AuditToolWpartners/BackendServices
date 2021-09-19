@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ButtonBase, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 
 // Components from MUI
 import Container from '@material-ui/core/Container';
@@ -7,17 +7,18 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 // Local components
-import ConditionalText from '../../components/ConditionalText';
-import TextFields from '../../components/TextFields';
-import Buttons from '../../components/Buttons';
-import Selects from '../../components/Selects';
-import TabPanel from '../../components/TabPanel';
+import ConditionalText from '../../../components/ConditionalText';
+import TextFields from '../../../components/TextFields';
+import Buttons from '../../../components/Buttons';
+import Selects from '../../../components/Selects';
+import TabPanel from '../../../components/TabPanel';
 import TabTwo from './tabs/TabTwo';
-import SelectsCustom from '../../components/SelectsCustom';
+import SelectsCustom from '../../../components/SelectsCustom';
+import Formiks from '../formik';
 
 // Logic
-import handleSubmits from '../../logic/handleSubmit';
-import handleNull from '../../logic/handleNull';
+import handleSubmits from '../../../logic/handleSubmit';
+import handleNull from '../../../logic/handleNull';
 
 // Icons from MUI
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
@@ -58,6 +59,17 @@ const setLS = (value, hook) => {
 const OrgDetails = () => {
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
+
+  // const formik = useFormik({
+  //   initialValues: {
+  //     orgName: '',
+  //   },
+  //   onSubmit: () => {
+  //     console.log("works")
+  //   },
+  // })
+
+  const formik = Formiks
 
   // Data States
   const [orgName, setOrgName] = useState('')
@@ -123,7 +135,6 @@ const OrgDetails = () => {
   }
 
   const handleSave = () => {
-    console.log(itModels)
 
     for(let i = 0; i < listValue.length && listHook ; i++) {
       setLS(listValue[i], listHook[i])
@@ -149,8 +160,6 @@ const OrgDetails = () => {
     };
   }
 
-  console.log(itModels)
-
   return (
     <Container>
         <Tabs value={tabValue} onChange={HandleTabChange} textColor="primary" variant="scrollable">
@@ -165,8 +174,8 @@ const OrgDetails = () => {
 
         </Tabs>
       <TabPanel value={tabValue} index={0}>
-        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-          {TextFields(classes.field, setOrgName, orgNameError, "Organisaton Name", "secondary", "text", "true", true, "orgName", false)}
+        <form noValidate autoComplete="off" onSubmit={formik.handleSubmit}>
+          {TextFields("orgName", "orgName", "Organisaton Name", formik.values.orgName, formik.handleChange, formik.touched.orgName && formik.errors.orgName, classes.field, "text")}
           {TextFields(classes.field, setRegAddress, regAddressError, "Registered Address", "secondary", "text", true, "true", "regAddress", false)}      
           {TextFields(classes.field, setCompanyType, companyTypeError, "Company Type", "secondary", "text", "true", true, "companyType", false)}
           {TextFields(classes.field, setYearOI, yearOIError, "Year Of Incorporation", "secondary", "date", true, "yearOI", true)}

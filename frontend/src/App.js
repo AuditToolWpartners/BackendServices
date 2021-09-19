@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
 import { createTheme, ThemeProvider } from '@material-ui/core';
-import PageSelect from './pages/PageSelect';
+import PageSelect from './pages/Audit/PageSelect';
 import SignUp from './pages/SignUp/SignUp'
 
 import ReactNotification from 'react-notifications-component'
@@ -47,10 +47,8 @@ const App = () => {
     if (user) {
       axios.get('http://192.168.227.18:8000/auth/signedin/')
       .then(res =>{
-        console.log("true")
         console.log(res)
         setAuth(true)
-        console.log(auth)
       }).catch(function (error) {
         console.log(error)
         setAuth(false);
@@ -71,26 +69,6 @@ const App = () => {
           <Routes/>
         </Router>
       </AuthApi.Provider>
-      {/* <Router>
-        <Switch>
-          <Route 
-            exact path="/"
-            component={Home}
-          />
-          <Route
-           path="/login" 
-           component={LogIn}
-          />
-          <Route
-           path="/signup" 
-           component={SignUp}
-          />
-          <Route
-           path="/audit" 
-           component={PageSelect}
-          />
-        </Switch>
-      </Router> */}
     </ThemeProvider>
   );
 }
@@ -101,6 +79,7 @@ const Routes = () => {
     <Switch>
       <ProtectedLogin path="/login" component={LogIn} auth={Auth.auth} />
       <ProtectedRoute path="/audit" component={PageSelect} auth={Auth.auth} />
+      <ProtectedSignup path="/signup" component={SignUp} auth={Auth.auth} />
     </Switch>
   )
 }
@@ -132,5 +111,20 @@ const ProtectedLogin = ({auth, component:Component, ...rest}) => {
   />
   )
 }
+
+const ProtectedSignup = ({auth, component:Component, ...rest}) => {
+  return(
+    <Route
+    {...rest}
+    render = {()=> !auth? (
+      <Component />
+    ):(
+        <Redirect to="/audit" />
+      )
+  }
+  />
+  )
+}
+
 
 export default App;

@@ -6,20 +6,23 @@ import TextField from '@material-ui/core/TextField';
 // Transitions from MUI
 import Grow from '@material-ui/core/Grow';
 
-const TextFields = (style, setVariable, variableError, label, color, type, fullWidth, required, lsVariable, shrink) => {
+const TextFields = (id, name, label, formikValues,formikHandleChange, formikError, formikHelper, style, type) => {
     return (
         <Grow in="true">
-        <TextField 
-            onChange={(e) => setVariable(e.target.value)}
-            className={style}
+        <TextField
+            fullWidth
+            id={id}
+            name={name}
             label={label}
+            value={formikValues}
+            onChange={formikHandleChange}
+            error={formikError}
+            helperText={formikHelper}
+            className={style}
             variant="outlined"
-            color={color}
+            color="secondary"
             type={type}
-            fullWidth={fullWidth}
-            required={required}
-            error={variableError}
-            defaultValue={localStorage.getItem(lsVariable)}
+            required
             InputLabelProps={{shrink: true}}
         />
         </Grow>

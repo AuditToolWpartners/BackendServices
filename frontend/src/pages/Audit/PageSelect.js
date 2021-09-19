@@ -53,18 +53,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         paddingTop: 0,
     },
-    tabs: {
-        // color: theme.palette.getContrastText('#ff4747'),
-        // backgroundColor: '#ff4747',
-        // background: '#ff4747',
-        // borderColor: '#ff4747',
-    },
-    tabss: {
-        // color: theme.palette.getContrastText('#ff4747'),
-        // backgroundColor: '#ff4747',
-        // background: '#ff4747',
-        // borderColor: '#ff4747',
-    },
     test: {
         alignItems: "flex-center",
         display: 'flex',
