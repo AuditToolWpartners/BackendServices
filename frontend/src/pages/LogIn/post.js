@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Notifications
-import { store } from 'react-notifications-component';
+import {store} from 'react-notifications-component';
 import 'animate.css/animate.min.css';
 
 // Cookies
@@ -31,10 +31,10 @@ const post = (username, password, auth) => {
             animationIn: ["animate__animated", "animate__fadeIn"],
             animationOut: ["animate__animated", "animate__fadeOut"],
             dismiss: {
-              duration: 10000,
-              onScreen: true
+                duration: 10000,
+                onScreen: true
             }
-          });
+        });
     }
 
     const failed = () => {
@@ -47,10 +47,10 @@ const post = (username, password, auth) => {
             animationIn: ["animate__animated", "animate__fadeIn"],
             animationOut: ["animate__animated", "animate__fadeOut"],
             dismiss: {
-              duration: 10000,
-              onScreen: true
+                duration: 10000,
+                onScreen: true
             }
-          });
+        });
     }
 
     const welcome = (username) => {
@@ -63,28 +63,28 @@ const post = (username, password, auth) => {
             animationIn: ["animate__animated", "animate__fadeIn"],
             animationOut: ["animate__animated", "animate__fadeOut"],
             dismiss: {
-              duration: 10000,
-              onScreen: true
+                duration: 10000,
+                onScreen: true
             }
-          });
+        });
     }
 
 
     axios.post('http://192.168.227.18:8000/auth/login/', body, config, {withCredentials: false})
-    .then(res => {
-        console.log(res);
-        loggedIn();
-        Cookies.set('jwt', res.data['jwt'], { sameSite: 'lax' });
-        axios.get('http://192.168.227.18:8000/auth/signedin/')
-        .then(res =>{
+        .then(res => {
             console.log(res);
-            auth(true);
-            window.location.href="/audit"
-        }).catch(function (error) {
-            console.log(error);
-            failed();
+            loggedIn();
+            Cookies.set('jwt', res.data['jwt'], {sameSite: 'lax'});
+            axios.get('http://192.168.227.18:8000/auth/signedin/')
+                .then(res => {
+                    console.log(res);
+                    auth(true);
+                    window.location.href = "/audit"
+                }).catch(function (error) {
+                console.log(error);
+                failed();
             })
-    }).catch(function (error) {
+        }).catch(function (error) {
         console.log(error);
         Cookies.remove('jwt');
         failed();

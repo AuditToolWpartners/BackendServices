@@ -15,6 +15,7 @@
     "formik": "^2.2.9",
     "js-cookie": "^3.0.1",
     "particles-bg": "^2.5.5",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-notifications-component": "^3.1.0",
