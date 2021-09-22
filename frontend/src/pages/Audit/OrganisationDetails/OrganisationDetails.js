@@ -14,12 +14,12 @@ import Selects from '../../../components/Selects';
 import TabPanel from '../../../components/TabPanel';
 import TabTwo from './tabs/TabTwo';
 import SelectsCustom from '../../../components/SelectsCustom';
-import {StoreContext} from "../store";
+import {StoreContext} from "../constantStore";
 
 
 // Logic
-import handleSubmits from '../../../logic/handleSubmit';
-import handleNull from '../../../logic/handleNull';
+import handleSubmits from '../../../utils/handleSubmit';
+import handleNull from '../../../utils/handleNull';
 
 // Icons from MUI
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
@@ -60,30 +60,37 @@ const setLS = (value, hook) => {
 const OrgDetails = () => {
     const classes = useStyles();
     const [tabValue, setTabValue] = useState(0);
+    const storeConstant = React.useContext(StoreContext);
+    const { //TODO: Maybe remove this, I can simply just do storeConstant.setOrgName
+        orgName,
+        setOrgName,
+        companyType,
+        setCompanyType,
+        regAddress,
+        setRegAddress,
+        yearOI,
+        setYearOI,
+        attackDetails,
+        setAttackDetails,
+        sufCyberAttack,
+        setSufCyberAttack,
+        cybInsurance,
+        setCybInsurance,
+        insuranceDetails,
+        setInsuranceDetails,
+        itModels,
+        setItModels
+    } = storeConstant;
 
-    const wordContext = React.useContext(StoreContext);
-
-    const {orgName, setOrgName, companyType, setCompanyType} = wordContext;
-
-    // Data States
-    const [regAddress, setRegAddress] = useState('')
-    const [yearOI, setYearOI] = useState('')
-    const [attackDetails, setAttackDetails] = useState('')
-    const [sufCyberAttack, setSufCyberAttack] = useState('')
-    const [cybInsurance, setCybInsurance] = useState('')
-    const [insuranceDetails, setInsuranceDetails] = useState('')
-    const [itModels, setItModels] = useState('')
+    const [cyberAttackCatScore, setCyberAttackCatScore] = useState(0);
 
     // Error States
-    const [orgNameError, setOrgNameError] = useState(false)
+    const [orgNameError, setOrgNameError] = useState(false) //TODO: Change these variables into the store variables
     const [companyTypeError, setCompanyTypeError] = useState(false)
     const [regAddressError, setRegAddressError] = useState(false)
     const [yearOIError, setYearOIError] = useState(false)
-    const [sufCyberAttackError, setSufCyberAttackError] = useState(false)
     const [attackDetailsError, setAttackDetailsError] = useState(false)
     const [insuranceDetailsError, setInsuranceDetailsError] = useState(false)
-    const [cybInsuranceError, setCybInsuranceError] = useState(false)
-    const [itModelsError, setItModelsError] = useState(false)
 
     const listValue = ["orgName", "regAddress", "companyType", "yearOI", "sufCyberAttack", "attackDetails", "insuranceDetails", "cybInsurance", "itModels"];
     const listHook = [orgName, regAddress, companyType, yearOI, sufCyberAttack, attackDetails, insuranceDetails, cybInsurance, itModels];
@@ -109,25 +116,22 @@ const OrgDetails = () => {
         }
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e) => { //TODO: Figure out a new way of doing this
         e.preventDefault()
 
         handleSubmits(orgName, setOrgNameError);
         handleSubmits(regAddress, setRegAddressError);
         handleSubmits(companyType, setCompanyTypeError);
         handleSubmits(yearOI, setYearOIError);
-        handleSubmits(sufCyberAttack, setSufCyberAttackError);
         handleSubmits(attackDetails, setAttackDetailsError);
         handleSubmits(insuranceDetails, setInsuranceDetailsError);
-        handleSubmits(cybInsurance, setCybInsuranceError);
-        handleSubmits(itModels, setItModelsError);
     }
 
-    const handleSave = () => {
-
+    const handleSave = () => { //TODO: Update this shoddy code
         for (let i = 0; i < listValue.length && listHook; i++) {
             setLS(listValue[i], listHook[i])
         }
+        console.log(cyberAttackCatScore)
     }
 
     const tabNextButton = () => {
@@ -168,7 +172,7 @@ const OrgDetails = () => {
                     {TextFields(classes.field, setCompanyType, companyTypeError, "Company Type", "secondary", "text", "true", true, "companyType", false)}
                     {TextFields(classes.field, setYearOI, yearOIError, "Year Of Incorporation", "secondary", "date", true, "yearOI", true)}
 
-                    {Selects("Have you suffered a cyber attack which has affected operations?", classes.label, setSufCyberAttack, "sufCyberAttack", true, "secondary")}
+                    {Selects("Have you suffered a cyber attack which has affected operations?", classes.label, setSufCyberAttack, "sufCyberAttack", true, "secondary", setCyberAttackCatScore, cyberAttackCatScore)}
                     {ConditionalText(sufCyberAttack, 'yes', classes.fields, setAttackDetails, true, attackDetailsError, "attackDetails")}
                     <br/>
 

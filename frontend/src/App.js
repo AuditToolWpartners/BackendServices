@@ -11,7 +11,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 import AuthApi from './AuthApi';
-import StoreProvider from './pages/Audit/store';
+import StoreProvider from './pages/Audit/constantStore';
 
 
 const theme = createTheme({
@@ -68,6 +68,7 @@ const App = () => {
                 <AuthApi.Provider value={{auth, setAuth}}>
                     <Router>
                         <Routes/>
+                        <Route path="/audit" component={PageSelect}/>
                     </Router>
                 </AuthApi.Provider>
             </StoreProvider>
@@ -80,7 +81,7 @@ const Routes = () => {
     return (
         <Switch>
             <ProtectedLogin path="/login" component={LogIn} auth={Auth.auth}/>
-            <ProtectedRoute path="/audit" component={PageSelect} auth={Auth.auth}/>
+            {/*<ProtectedRoute path="/audit" component={PageSelect} auth={Auth.auth}/>*/}
             <ProtectedSignup path="/signup" component={SignUp} auth={Auth.auth}/>
         </Switch>
     )
