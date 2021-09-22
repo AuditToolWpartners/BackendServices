@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
-import Home from './pages/Home';
 import {createTheme, ThemeProvider} from '@material-ui/core';
 import PageSelect from './pages/Audit/PageSelect';
 import SignUp from './pages/SignUp/SignUp'
@@ -91,8 +90,7 @@ const ProtectedRoute = (
     {
         auth, component:
         Component,
-        ...
-            rest
+        ...rest
     }
 ) => {
     return (
@@ -112,8 +110,7 @@ const ProtectedLogin = (
     {
         auth, component:
         Component,
-        ...
-            rest
+        ...rest
     }
 ) => {
     return (
@@ -133,8 +130,7 @@ const ProtectedSignup = (
     {
         auth, component:
         Component,
-        ...
-            rest
+        ...rest
     }
 ) => {
     return (

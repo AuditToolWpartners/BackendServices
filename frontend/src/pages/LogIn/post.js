@@ -79,6 +79,7 @@ const post = (username, password, auth) => {
                 .then(res => {
                     console.log(res);
                     auth(true);
+                    welcome('Placeholder')
                     window.location.href = "/audit"
                 }).catch(function (error) {
                 console.log(error);
