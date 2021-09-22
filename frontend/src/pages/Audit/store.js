@@ -5,19 +5,19 @@ export const StoreContext = createContext({});
 
 export const Provider = props => {
     const {
-        word: initialWord,
-        selectedWord: initialSelectedWord,
+        orgName: userOrgName,
+        companyType: userCompanyType,
         children
     } = props;
 
-    const [word, setWord] = React.useState(initialWord);
-    const [selectedWord, setSelectedWord] = React.useState(initialSelectedWord);
+    const [orgName, setOrgName] = React.useState(userOrgName);
+    const [companyType, setCompanyType] = React.useState(userCompanyType);
 
     const wordsContext = {
-        word,
-        setWord,
-        selectedWord,
-        setSelectedWord
+        orgName,
+        setOrgName,
+        companyType,
+        setCompanyType
     }
 
     return <StoreContext.Provider value={wordsContext}>{children}</StoreContext.Provider>;
@@ -26,13 +26,13 @@ export const Provider = props => {
 export const {Consumer} = StoreContext;
 
 Provider.propTypes = {
-    word: PropTypes.string,
-    selectedWord: PropTypes.string
+    orgName: PropTypes.string,
+    companyType: PropTypes.string
 };
 
 Provider.defaultProps = {
-    word: '',
-    selectedWord: ''
+    orgName: '',
+    companyType: ''
 };
 
 export default Provider;

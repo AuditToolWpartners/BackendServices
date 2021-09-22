@@ -14,6 +14,8 @@ import Selects from '../../../components/Selects';
 import TabPanel from '../../../components/TabPanel';
 import TabTwo from './tabs/TabTwo';
 import SelectsCustom from '../../../components/SelectsCustom';
+import {StoreContext} from "../store";
+
 
 // Logic
 import handleSubmits from '../../../logic/handleSubmit';
@@ -59,9 +61,11 @@ const OrgDetails = () => {
     const classes = useStyles();
     const [tabValue, setTabValue] = useState(0);
 
+    const wordContext = React.useContext(StoreContext);
+
+    const {orgName, setOrgName, companyType, setCompanyType} = wordContext;
+
     // Data States
-    const [orgName, setOrgName] = useState('')
-    const [companyType, setCompanyType] = useState('')
     const [regAddress, setRegAddress] = useState('')
     const [yearOI, setYearOI] = useState('')
     const [attackDetails, setAttackDetails] = useState('')
@@ -104,7 +108,6 @@ const OrgDetails = () => {
             setLS(listValue[i], listHook[i])
         }
     }, []);
-
 
     const handleSubmit = (e) => {
         e.preventDefault()

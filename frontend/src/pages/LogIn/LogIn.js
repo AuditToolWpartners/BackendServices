@@ -116,11 +116,3 @@ const LogIn = () => {
 }
 
 export default LogIn
-
-//    import {StoreContext} from "../Audit/store";
-//    const wordContext = React.useContext(StoreContext);
-//
-//     const {word, setWord} = wordContext;
-//
-//     setWord('test');
-//     console.log(word)
