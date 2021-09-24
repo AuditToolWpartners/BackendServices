@@ -1,5 +1,7 @@
 from calendar import setfirstweekday
+import re
 from django.db.models.expressions import Value
+from django.http import response
 from django.http.response import HttpResponseBadRequest
 from django.shortcuts import render
 from rest_framework import generics, serializers
@@ -13,7 +15,8 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 import datetime
 import jwt
-
+from .token import Decoder
+from .token import URLCreator
 
 
 
@@ -33,7 +36,9 @@ class createuser(APIView):
             password = serialzer.data.get('password')
             print('valid')
             user = User.objects.create_user(username=username, password=password)
-            return HttpResponse("USER CREATED", content_type="text/plain")
+            user.is_active = False
+            emailurl = URLCreator(f'{user.id}')
+            return HttpResponse(f"USER CREATED {emailurl}", content_type="text/plain")
         else:
             return HttpResponse("USER NOT CREATED", content_type="text/plain", status=400)
 
@@ -87,6 +92,22 @@ class signedin(APIView):
         print(Sdata) #Edited Lines
         return Response(Sdata)
         #Do whatever past here TEST CODE ON WIN PC
+
+class EmailVerify(APIView):
+
+    def get(self, request, userid):
+        try:
+            user = User.objects.get(id=Decoder(userid))
+            user.is_active = True
+            return Response('Account activated')
+        except:
+             return Response('Failed')
+        
+
+
+
+
+
 
 
         
