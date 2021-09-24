@@ -7,10 +7,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-// Local Components
-import ConditionalText from '../../../components/ConditionalText';
-import TextFields from '../../../components/TextFields';
-
 const useStyles = makeStyles({
     field: {
       marginTop: 20,
@@ -45,9 +41,6 @@ const TabTwo = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        
-        
-
     }
 
     return (

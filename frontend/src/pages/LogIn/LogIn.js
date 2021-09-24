@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router';
+import React, {useState} from 'react';
 
 // CSS
 import './LogIn.css';
@@ -8,7 +7,7 @@ import './LogIn.css';
 import post from './post';
 
 // MaterialUI Components
-import { Link, makeStyles } from '@material-ui/core';
+import {Link, makeStyles} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -18,50 +17,47 @@ import Paper from '@material-ui/core/Paper';
 import ParticlesBg from 'particles-bg';
 
 // Formik Components
-import { useFormik } from 'formik';
+import {useFormik} from 'formik';
 import * as yup from 'yup';
-
-import AuthApi from '../../AuthApi';
 
 // Styles
 const useStyles = makeStyles({
     field: {
         marginTop: 20,
         marginBottom: 20,
-      },
+    },
 });
 
 const validationSchema = yup.object({ // Sign Up Validation
     email: yup
-      .string('Enter your email')
-      .email('Enter a valid email')
-      .required('Email is required'),
+        .string('Enter your email')
+        .email('Enter a valid email')
+        .required('Email is required'),
     password: yup
-      .string('Enter your password')
-      .max(32, 'Password cannot be more than 32 characters')
-      .required('Password is required')
-  });
+        .string('Enter your password')
+        .max(32, 'Password cannot be more than 32 characters')
+        .required('Password is required')
+});
 
 const LogIn = () => {
     // Style Variables
     const classes = useStyles();
-    const paperStyle = { padding: '30px 20px', width: 300, margin: "50px auto" }
+    const paperStyle = {padding: '30px 20px', width: 300, margin: "50px auto"}
 
     const [auth, setAuth] = useState(false)
-    const Auth = React.useContext(AuthApi);
 
     const formik = useFormik({ // Initializing Formik
         initialValues: {
-          email: '',
-          password: '',
+            email: '',
+            password: '',
         },
         validationSchema: validationSchema,
         onSubmit: () => {
             post(formik.values.email, formik.values.password, setAuth);
-            },
-      });
+        },
+    });
 
-    return(
+    return (
         <div className="loginPage">
             <form onSubmit={formik.handleSubmit} className="form">
                 <Grid>
@@ -70,7 +66,8 @@ const LogIn = () => {
                             <Grid align='center'>
                                 <div className="header">
                                     <h1>Log In</h1>
-                                    <h4>Don't have an account? <Link href="http://localhost:3000/SignUp">Sign Up</Link></h4>
+                                    <h4>Don't have an account? <Link href="http://localhost:3000/SignUp">Sign Up</Link>
+                                    </h4>
                                 </div>
                             </Grid>
                             <TextField
@@ -81,14 +78,14 @@ const LogIn = () => {
                                 value={formik.values.email}
                                 onChange={formik.handleChange}
                                 error={formik.touched.email && Boolean(formik.errors.email)}
-                                helperText={formik.touched.email && formik.errors.email}      
+                                helperText={formik.touched.email && formik.errors.email}
                                 className={classes.field}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
                             />
 
-                            <TextField 
+                            <TextField
                                 fullWidth
                                 id="password"
                                 name="password"
@@ -109,13 +106,13 @@ const LogIn = () => {
                             </Button>
                         </Paper>
                     </Grid>
-            </Grid>
+                </Grid>
             </form>
-                <ParticlesBg color="#ff4747" num={200} type="cobweb" bg={true} /> {/* Handles the background */}
-            </div>
+            <ParticlesBg color="#ff4747" num={150} type="cobweb" bg={true}/> {/* Handles the background */}
+        </div>
 
     );
 
 }
 
-export default LogIn;
+export default LogIn
