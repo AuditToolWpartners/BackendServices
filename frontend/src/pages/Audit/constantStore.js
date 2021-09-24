@@ -49,7 +49,6 @@ export const Provider = props => {
         setItModels
     }
 
-
     return <StoreContext.Provider value={setConstants}>{children}</StoreContext.Provider>;
 };
 

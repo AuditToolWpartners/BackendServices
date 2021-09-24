@@ -16,7 +16,6 @@ import TabTwo from './tabs/TabTwo';
 import SelectsCustom from '../../../components/SelectsCustom';
 import {StoreContext} from "../constantStore";
 
-
 // Logic
 import handleSubmits from '../../../utils/handleSubmit';
 import handleNull from '../../../utils/handleNull';
@@ -114,6 +113,8 @@ const OrgDetails = () => {
         for (let i = 0; i < listValue.length && listHook; i++) {
             setLS(listValue[i], listHook[i])
         }
+
+        // eslint-disable-next-line
     }, []);
 
     const handleSubmit = (e) => { //TODO: Figure out a new way of doing this

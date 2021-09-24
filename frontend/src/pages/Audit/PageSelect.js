@@ -18,6 +18,7 @@ const TabPanelVertical = (props) => {
     return (
 
         <div
+            /* eslint-disable-next-line jsx-a11y/aria-role */
             role="TabPanelVertical"
             hidden={value !== index}
             id={`vertical-TabPanelVertical-${index}`}
@@ -46,9 +47,9 @@ const a11yProps = (index) => {
     };
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
-        justifyContent: "cente",
+        justifyContent: "center",
         backgroundColor: "primary",
         display: 'flex',
         paddingTop: 0,

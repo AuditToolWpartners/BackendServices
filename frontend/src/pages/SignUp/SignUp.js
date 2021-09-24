@@ -59,6 +59,7 @@ const SignUp = () => {
     const classes = useStyles();
     const paperStyle = { padding: '30px 20px', width: 300, margin: "50px auto" }
     // Policy Variables
+    // eslint-disable-next-line no-unused-vars
     const [state, setState] = useState({ policy: false })
     const { policy } = state;
     const error = [policy].filter((v) => v).length !== 2;

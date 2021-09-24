@@ -44,6 +44,7 @@ const LogIn = () => {
     const classes = useStyles();
     const paperStyle = {padding: '30px 20px', width: 300, margin: "50px auto"}
 
+    // eslint-disable-next-line no-unused-vars
     const [auth, setAuth] = useState(false)
 
     const formik = useFormik({ // Initializing Formik
