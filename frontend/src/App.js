@@ -2,7 +2,8 @@ import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import {createTheme, ThemeProvider} from '@material-ui/core';
 import PageSelect from './pages/Audit/PageSelect';
-import SignUp from './pages/SignUp/SignUp'
+import SignUp from './pages/SignUp/SignUp';
+import Error from './pages/404/Error';
 
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
@@ -61,6 +62,8 @@ const Routes = () => {
             <ProtectedLogin path="/login" component={LogIn} auth={storeConstant.auth}/>
             <ProtectedRoute path="/audit" component={PageSelect} auth={storeConstant.auth}/>
             <ProtectedSignup path="/signup" component={SignUp} auth={storeConstant.auth}/>
+            <Route component={PageSelect} path="/debug"/>
+            <Route component={Error}/>
         </Switch>
     )
 }

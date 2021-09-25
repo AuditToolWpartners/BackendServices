@@ -60,7 +60,7 @@ const OrgDetails = () => {
     const classes = useStyles();
     const [tabValue, setTabValue] = useState(0);
     const storeConstant = React.useContext(StoreContext);
-    const { //TODO: Maybe remove this, I can simply just do storeConstant.setOrgName
+    const { //TODO: Maybe remove this, I can simply just do storeConstant.setOrgName, however this may not be as efficient if i have to call them more than once
         orgName,
         setOrgName,
         companyType,
@@ -169,7 +169,8 @@ const OrgDetails = () => {
             </Tabs>
             <TabPanel value={tabValue} index={0}>
                 <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-                    {TextFields(classes.field, setOrgName, orgNameError, "Organisation Name", "secondary", "text", "true", true, "orgName", false)} {TextFields(classes.field, setRegAddress, regAddressError, "Registered Address", "secondary", "text", true, "true", "regAddress", false)}
+                    {TextFields(classes.field, setOrgName, orgNameError, "Organisation Name", "secondary", "text", "true", true, "orgName", false)}
+                    {TextFields(classes.field, setRegAddress, regAddressError, "Registered Address", "secondary", "text", true, "true", "regAddress", false)}
                     {TextFields(classes.field, setCompanyType, companyTypeError, "Company Type", "secondary", "text", "true", true, "companyType", false)}
                     {TextFields(classes.field, setYearOI, yearOIError, "Year Of Incorporation", "secondary", "date", true, "yearOI", true)}
 
