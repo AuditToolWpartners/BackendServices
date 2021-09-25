@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 // CSS
 import './LogIn.css';
 
 // Local Components
 import post from './post';
+import {StoreContext} from "../Audit/constantStore";
 
 // MaterialUI Components
 import {Link, makeStyles} from '@material-ui/core';
@@ -12,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+
 
 // Background Components
 import ParticlesBg from 'particles-bg';
@@ -40,12 +42,13 @@ const validationSchema = yup.object({ // Sign Up Validation
 });
 
 const LogIn = () => {
+    const storeConstants = React.useContext(StoreContext);
     // Style Variables
     const classes = useStyles();
     const paperStyle = {padding: '30px 20px', width: 300, margin: "50px auto"}
 
     // eslint-disable-next-line no-unused-vars
-    const [auth, setAuth] = useState(false)
+    const {auth, setAuth} = storeConstants
 
     const formik = useFormik({ // Initializing Formik
         initialValues: {

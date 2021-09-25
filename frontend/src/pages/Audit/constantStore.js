@@ -5,6 +5,7 @@ export const StoreContext = createContext({});
 
 export const Provider = props => {
     const {
+        auth: clientAuth,
         orgName: userOrgName,
         companyType: userCompanyType,
         regAddress: userRegAddress,
@@ -26,9 +27,12 @@ export const Provider = props => {
     const [cybInsurance, setCybInsurance] = useState(userCybInsurance);
     const [insuranceDetails, setInsuranceDetails] = useState(userInsuranceDetails);
     const [itModels, setItModels] = useState(userItModels);
+    const [auth, setAuth] = useState(clientAuth);
 
 
     const setConstants = {
+        auth,
+        setAuth,
         orgName,
         setOrgName,
         companyType,
@@ -46,7 +50,7 @@ export const Provider = props => {
         insuranceDetails,
         setInsuranceDetails,
         itModels,
-        setItModels
+        setItModels,
     }
 
     return <StoreContext.Provider value={setConstants}>{children}</StoreContext.Provider>;
@@ -55,6 +59,7 @@ export const Provider = props => {
 export const {Consumer} = StoreContext;
 
 Provider.propTypes = {
+    auth: PropTypes.bool,
     orgName: PropTypes.string,
     companyType: PropTypes.string,
     regAddress: PropTypes.string,
@@ -63,6 +68,7 @@ Provider.propTypes = {
 };
 
 Provider.defaultProps = {
+    auth: false,
     orgName: '',
     companyType: '',
     regAddress: '',
