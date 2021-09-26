@@ -6,11 +6,6 @@ body {
     transition: .3s ease-in-out;
 }
 
-.dark-mode {
-    background: #252730;
-    color: #FFF;
-}
-
 #wrapper {
     margin-left: auto;
     margin-right: auto;
@@ -24,20 +19,6 @@ div#title, div#subtext {
     margin-right: auto;
     width: 100%;
     text-align: center;
-}
-
-div#toggle {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 75px;
-    text-align: center;
-
-}
-
-div#footer {
-    opacity: 75%;
-    margin: 400px 100px -10px -80px;
-    padding: 0px;
 }
 
 div#subtext {
