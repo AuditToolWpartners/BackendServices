@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Grow from '@material-ui/core/Grow';
 
 
 // Background Components
@@ -63,58 +64,60 @@ const LogIn = () => {
 
     return (
         <div className="loginPage">
-            <form onSubmit={formik.handleSubmit} className="form">
-                <Grid>
-                    <Grid alignContent='center' alignItems='center' justifyContent='center'>
-                        <Paper elevation={24} style={paperStyle}>
-                            <Grid align='center'>
-                                <div className="header">
-                                    <h1>Log In</h1>
-                                    <h4>Don't have an account? <Link href="http://localhost:3000/SignUp">Sign Up</Link>
-                                    </h4>
-                                </div>
-                            </Grid>
-                            <TextField
-                                fullWidth
-                                id="email"
-                                name="email"
-                                label="Email"
-                                value={formik.values.email}
-                                onChange={formik.handleChange}
-                                error={formik.touched.email && Boolean(formik.errors.email)}
-                                helperText={formik.touched.email && formik.errors.email}
-                                className={classes.field}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
+            <Grow in="true" out="true">
+                <form onSubmit={formik.handleSubmit} className="form">
+                    <Grid>
+                        <Grid alignContent='center' alignItems='center' justifyContent='center'>
+                            <Paper elevation={24} style={paperStyle}>
+                                <Grid align='center'>
+                                    <div className="header">
+                                        <h1>Log In</h1>
+                                        <h4>Don't have an account? <Link href="http://localhost:3000/SignUp">Sign
+                                            Up</Link>
+                                        </h4>
+                                    </div>
+                                </Grid>
+                                <TextField
+                                    fullWidth
+                                    id="email"
+                                    name="email"
+                                    label="Email"
+                                    value={formik.values.email}
+                                    onChange={formik.handleChange}
+                                    error={formik.touched.email && Boolean(formik.errors.email)}
+                                    helperText={formik.touched.email && formik.errors.email}
+                                    className={classes.field}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
 
-                            <TextField
-                                fullWidth
-                                id="password"
-                                name="password"
-                                label="Password"
-                                type="password"
-                                value={formik.values.password}
-                                onChange={formik.handleChange}
-                                error={formik.touched.password && Boolean(formik.errors.password)}
-                                helperText={formik.touched.password && formik.errors.password}
-                                className={classes.field}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
-                            <br/>
-                            <Button color="primary" variant="contained" type="submit" fullWidth>
-                                Log In
-                            </Button>
-                        </Paper>
+                                <TextField
+                                    fullWidth
+                                    id="password"
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    value={formik.values.password}
+                                    onChange={formik.handleChange}
+                                    error={formik.touched.password && Boolean(formik.errors.password)}
+                                    helperText={formik.touched.password && formik.errors.password}
+                                    className={classes.field}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                                <br/>
+                                <Button color="primary" variant="contained" type="submit" fullWidth>
+                                    Log In
+                                </Button>
+                            </Paper>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </form>
+                </form>
+            </Grow>
             <ParticlesBg color="#ff4747" num={150} type="cobweb" bg={true}/> {/* Handles the background */}
         </div>
-
     );
 
 }
