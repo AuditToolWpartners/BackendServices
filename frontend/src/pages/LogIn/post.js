@@ -79,7 +79,6 @@ const post = (username, password, auth) => {
                 .then(res => {
                     console.log(res);
                     auth(true);
-                    console.log(auth)
                     welcome('Placeholder')
                 }).catch(function (error) {
                 console.log(error);

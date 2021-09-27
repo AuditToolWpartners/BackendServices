@@ -18,8 +18,8 @@ export const Provider = props => {
         children
     } = props;
 
-    const [orgName, setOrgName] = React.useState(userOrgName);
-    const [companyType, setCompanyType] = React.useState(userCompanyType);
+    const [orgName, setOrgName] = useState(userOrgName);
+    const [companyType, setCompanyType] = useState(userCompanyType);
     const [regAddress, setRegAddress] = useState(userRegAddress);
     const [yearOI, setYearOI] = useState(userYearOI);
     const [attackDetails, setAttackDetails] = useState(userAttackDetails);

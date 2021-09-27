@@ -48,8 +48,7 @@ const LogIn = () => {
     const classes = useStyles();
     const paperStyle = {padding: '30px 20px', width: 300, margin: "50px auto"}
 
-    // eslint-disable-next-line no-unused-vars
-    const {auth, setAuth} = storeConstants
+    // const {auth, setAuth} = storeConstants
 
     const formik = useFormik({ // Initializing Formik
         initialValues: {
@@ -58,7 +57,7 @@ const LogIn = () => {
         },
         validationSchema: validationSchema,
         onSubmit: () => {
-            post(formik.values.email, formik.values.password, setAuth);
+            post(formik.values.email, formik.values.password, storeConstants.setAuth);
         },
     });
 

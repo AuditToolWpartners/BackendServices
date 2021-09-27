@@ -16,15 +16,15 @@ const Selects = (text, className, setVariable, lsVariable, fullWidth, color, set
 
     return (
         <>
-            <Grow in="true">
+            <Grow in={true}>
                 <InputLabel id="inputLabel" className={className}>{text}</InputLabel>
             </Grow>
-            <Grow in="true">
+            <Grow in={true}>
                 <Select
                     onChange={(e => handleChange(e.target.value))}
                     labelId="inputLabel"
-                    defaultValue={localStorage.getItem(lsVariable)}
-                    fullWidth={fullWidth}
+                    value={localStorage.getItem(lsVariable)}
+                    fullWidth={true}
                     color={color}
                     variant="outlined"
                 >

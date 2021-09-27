@@ -8,7 +8,7 @@ import Grow from '@material-ui/core/Grow';
 
 const TextFields = (style, setVariable, variableError, label, color, type, fullWidth, required, lsVariable) => {
     return (
-        <Grow in="true">
+        <Grow in={true}>
             <TextField
                 onChange={(e) => setVariable(e.target.value)}
                 className={style}
@@ -16,8 +16,8 @@ const TextFields = (style, setVariable, variableError, label, color, type, fullW
                 variant="outlined"
                 color={color}
                 type={type}
-                fullWidth={fullWidth}
-                required={required}
+                fullWidth={true}
+                required={true}
                 error={variableError}
                 defaultValue={localStorage.getItem(lsVariable)}
                 InputLabelProps={{shrink: true}}

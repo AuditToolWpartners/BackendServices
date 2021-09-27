@@ -3,7 +3,6 @@ import './Error.css';
 import Grow from '@material-ui/core/Grow';
 
 const Error = () => {
-
     return (
         <Grow in="true" out="true">
             <body>

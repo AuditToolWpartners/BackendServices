@@ -4,7 +4,6 @@ import {createTheme, ThemeProvider} from '@material-ui/core';
 import PageSelect from './pages/Audit/PageSelect';
 import SignUp from './pages/SignUp/SignUp';
 import Error from './pages/404/Error';
-
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import LogIn from './pages/LogIn/LogIn';
@@ -70,8 +69,7 @@ const Routes = () => {
 
 const CheckAuth = () => {
     const storeConstant = React.useContext(StoreContext);
-    const {auth, setAuth} = storeConstant;
-    console.log(storeConstant.setAuth)
+    // const {auth, setAuth} = storeConstant;
     axios.defaults.withCredentials = true;
     const readCookie = () => {
         const user = Cookies.get("jwt");
@@ -79,11 +77,10 @@ const CheckAuth = () => {
             axios.get('http://192.168.227.21:8000/auth/signedin/')
                 .then(res => {
                     console.log(res)
-                    setAuth(true)
+                    storeConstant.setAuth(true)
                 }).catch(function (error) {
                 console.log(error)
-                setAuth(false)
-                console.log(auth)
+                storeConstant.setAuth(false)
             })
         }
     }

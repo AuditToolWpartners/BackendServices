@@ -5,6 +5,7 @@ import {makeStyles} from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 // Local components
 import ConditionalText from '../../../components/ConditionalText';
@@ -132,7 +133,6 @@ const OrgDetails = () => {
         for (let i = 0; i < listValue.length && listHook; i++) {
             setLS(listValue[i], listHook[i])
         }
-        console.log(cyberAttackCatScore)
     }
 
     const tabNextButton = () => {
@@ -183,9 +183,10 @@ const OrgDetails = () => {
 
                     {SelectsCustom("Which of these IT Models do you use?", classes.label, setItModels, "itModels", true, "secondary", "byod", "id", "mm", "Bring Your Own Device", "Issued Devices", "Mixed Model")}
 
-                    {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
-                    {Buttons(handleSave, classes.bttn, "primary", <SaveOutlinedIcon/>, "Save")}
-                    <br/>
+                    <ButtonGroup>
+                        {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
+                        {Buttons(handleSave, classes.bttn, "primary", <SaveOutlinedIcon/>, "Save")}
+                    </ButtonGroup>
                 </form>
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
