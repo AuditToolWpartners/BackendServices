@@ -90,8 +90,6 @@ const CheckAuth = () => {
     }, [])
 
     return null;
-
-
 }
 
 const ProtectedRoute = (

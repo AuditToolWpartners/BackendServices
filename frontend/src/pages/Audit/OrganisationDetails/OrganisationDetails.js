@@ -91,7 +91,6 @@ const OrgDetails = () => {
     const [yearOIError, setYearOIError] = useState(false)
     const [attackDetailsError, setAttackDetailsError] = useState(false)
     const [insuranceDetailsError, setInsuranceDetailsError] = useState(false)
-
     const listValue = ["orgName", "regAddress", "companyType", "yearOI", "sufCyberAttack", "attackDetails", "insuranceDetails", "cybInsurance", "itModels"];
     const listHook = [orgName, regAddress, companyType, yearOI, sufCyberAttack, attackDetails, insuranceDetails, cybInsurance, itModels];
     const listSetHook = [setOrgName, setRegAddress, setCompanyType, setYearOI, setSufCyberAttack, setAttackDetails, setInsuranceDetails, setCybInsurance, setItModels];
@@ -114,7 +113,6 @@ const OrgDetails = () => {
         for (let i = 0; i < listValue.length && listHook; i++) {
             setLS(listValue[i], listHook[i])
         }
-
         // eslint-disable-next-line
     }, []);
 
