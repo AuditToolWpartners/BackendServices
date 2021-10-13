@@ -41,7 +41,7 @@ const TabOne = () => {
             {TextFields(classes.field, api.setCompanyType, "Company Type", "secondary", "text", "true", true, "companyType", false)}
             {TextFields(classes.field, api.setYearOI, "Year Of Incorporation", "secondary", "date", true, "yearOI", true)}
 
-            {Selects("Have you suffered a cyber attack which has affected operations?", classes.label, api.setSufCyberAttack, "sufCyberAttack", true, "secondary", api.setCyberAttackCatScore)}
+            {Selects("Have you suffered a cyber attack which has affected operations?", classes.label, api.setSufCyberAttack, "sufCyberAttack", true, "secondary", api.setCybAttackScore)}
             {ConditionalText(api.sufCyberAttack, 'yes', classes.fields, api.setAttackDetails, true, "attackDetails")}
             <br/>
 

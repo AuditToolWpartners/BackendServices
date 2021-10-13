@@ -27,7 +27,7 @@ export const Provider = props => {
         srvGov: userSrvGov,
         srvDef: userSrvDef,
 //      Scoring
-        cyberAttackCatScore: userCybAttackCatScore,
+        cybAttackScore: userCybAttackScore,
         cybInsCatScore: usercybInsCatScore,
         prtCNIScore: userPrtCNIScore,
         srvGovScore: userSrvGovScore,
@@ -59,7 +59,7 @@ export const Provider = props => {
     const [srvDef, setSrvDef] = useState(userSrvDef);
 
     // Score Variables
-    const [cyberAttackCatScore, setCyberAttackCatScore] = useState(userCybAttackCatScore);
+    const [cybAttackScore, setCybAttackScore] = useState(userCybAttackScore);
     const [cybInsCatScore, setCybInsCatScore] = useState(usercybInsCatScore);
     const [prtCNIScore, setPrtCNIScore] = useState(userPrtCNIScore);
     const [srvGovScore, setSrvGovScore] = useState(userSrvGovScore);
@@ -114,8 +114,8 @@ export const Provider = props => {
 //
 //      Score Variables
 //
-        cyberAttackCatScore,
-        setCyberAttackCatScore,
+        cybAttackScore,
+        setCybAttackScore,
         cybInsCatScore,
         setCybInsCatScore,
         prtCNIScore,
@@ -158,7 +158,7 @@ Provider.defaultProps = {
     region: '',
     indVert: '',
 //  Scoring
-    cyberAttackCatScore: 0,
+    cybAttackScore: 0,
     cybInsCatScore: 0,
     prtCNIScore: 0,
     srvGovScore: 0,
