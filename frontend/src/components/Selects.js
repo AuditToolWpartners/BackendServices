@@ -7,11 +7,11 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Grow from '@material-ui/core/Grow';
 import handleScore from "../utils/handleScore";
 
-const Selects = (text, className, setVariable, lsVariable, fullWidth, color, setCategoryScore, categoryScore, setNistScore) => {
+const Selects = (text, className, setVariable, lsVariable, fullWidth, color, setCategoryScore) => {
 
     const handleChange = (value) => {
         setVariable(value)
-        handleScore(value, setCategoryScore, categoryScore)//TODO: add nist scoring
+        handleScore(value, setCategoryScore)//TODO: add nist scoring
     }
 
     return (
@@ -23,14 +23,14 @@ const Selects = (text, className, setVariable, lsVariable, fullWidth, color, set
                 <Select
                     onChange={(e => handleChange(e.target.value))}
                     labelId="inputLabel"
-                    value={localStorage.getItem(lsVariable)}
+                    defaultValue={""}
                     fullWidth={true}
                     color={color}
                     variant="outlined"
                 >
-                    <MenuItem value={"yes"}>Yes - Provide more details</MenuItem>
-                    <MenuItem value={"no"}>No</MenuItem>
-                    <MenuItem value={"pns"}>Prefer not to say</MenuItem>
+                    <MenuItem value="yes">Yes - Please provide more details.</MenuItem>
+                    <MenuItem value="no">No</MenuItem>
+                    <MenuItem value="pns">Prefer not to say</MenuItem>
                 </Select>
             </Grow>
         </>
