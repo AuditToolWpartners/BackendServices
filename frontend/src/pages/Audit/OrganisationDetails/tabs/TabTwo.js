@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core';
-
-// MUI Components
-import Grow from '@material-ui/core/Grow'
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import SelectsCustom from "../../../../components/SelectsCustom";
+import {StoreContext} from "../../constantStore";
+import TextFields from "../../../../components/TextFields";
 
 const useStyles = makeStyles({
     field: {
@@ -25,48 +22,22 @@ const useStyles = makeStyles({
       paddingLeft: 14
     },
 })
-// eslint-disable-next-line
-  const setLS = (value, hook) => (
-    localStorage.setItem(value, hook)
-  );
-
-// eslint-disable-next-line
-  const getLS = (value) => (
-    localStorage.getItem(value)
-  );
 
 const TabTwo = () => {
-    const classes = useStyles;
-// eslint-disable-next-line
-    const [companySize, setCompanySize] = useState('');
-    
+    const classes = useStyles();
+    const api = React.useContext(StoreContext);
+
     const handleSubmit = (e) => {
         e.preventDefault()
     }
 
     return (
         <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-            <Grow in="true">
-                <div>
-                    <InputLabel id="companySizeL" className={classes.label}>Company Size</InputLabel>
-                    <Select
-                        onChange={(e => setCompanySize(e.target.value))}
-                        labelId="companySizeL"
-                        defaultValue={localStorage.getItem("companySize")}
-                        fullWidth="true"
-                        color="secondary"
-                        variant="outlined"
-                    >
-                        <MenuItem value={"micro"}>Micro</MenuItem>
-                        <MenuItem value={"small"}>Small</MenuItem>
-                        <MenuItem value={"medium"}>Medium</MenuItem>
-                        <MenuItem value={"large"}>Large</MenuItem>
-                    </Select>
-                </div>
-            </Grow>
-
+            {SelectsCustom("Company Size", classes.label, api.setComSize, true, "secondary", "small", "medium", "large", "Small", "Medium", "Large")}
+            {TextFields(classes.field, api.setEmployees, "Number of Employees", "secondary", "number", true, "placeholder", true)}
+            {TextFields(classes.field, api.setContractors, "Number of Contractors / Associates", "secondary", "number", true, "placeholder", true)}
+            {TextFields(classes.field, api.setRegion, "Regions which you operate", "secondary", "text", true, "placeholder", true)}
         </form>
-
     );
 }
 
