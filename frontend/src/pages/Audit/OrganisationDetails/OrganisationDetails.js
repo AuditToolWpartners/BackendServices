@@ -5,6 +5,7 @@ import {makeStyles} from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 // Local components
 import ConditionalText from '../../../components/ConditionalText';
@@ -15,7 +16,6 @@ import TabPanel from '../../../components/TabPanel';
 import TabTwo from './tabs/TabTwo';
 import SelectsCustom from '../../../components/SelectsCustom';
 import {StoreContext} from "../constantStore";
-
 
 // Logic
 import handleSubmits from '../../../utils/handleSubmit';
@@ -61,7 +61,7 @@ const OrgDetails = () => {
     const classes = useStyles();
     const [tabValue, setTabValue] = useState(0);
     const storeConstant = React.useContext(StoreContext);
-    const { //TODO: Maybe remove this, I can simply just do storeConstant.setOrgName
+    const { //TODO: Maybe remove this, I can simply just do storeConstant.setOrgName, however this may not be as efficient if i have to call them more than once
         orgName,
         setOrgName,
         companyType,
@@ -91,7 +91,6 @@ const OrgDetails = () => {
     const [yearOIError, setYearOIError] = useState(false)
     const [attackDetailsError, setAttackDetailsError] = useState(false)
     const [insuranceDetailsError, setInsuranceDetailsError] = useState(false)
-
     const listValue = ["orgName", "regAddress", "companyType", "yearOI", "sufCyberAttack", "attackDetails", "insuranceDetails", "cybInsurance", "itModels"];
     const listHook = [orgName, regAddress, companyType, yearOI, sufCyberAttack, attackDetails, insuranceDetails, cybInsurance, itModels];
     const listSetHook = [setOrgName, setRegAddress, setCompanyType, setYearOI, setSufCyberAttack, setAttackDetails, setInsuranceDetails, setCybInsurance, setItModels];
@@ -114,6 +113,7 @@ const OrgDetails = () => {
         for (let i = 0; i < listValue.length && listHook; i++) {
             setLS(listValue[i], listHook[i])
         }
+        // eslint-disable-next-line
     }, []);
 
     const handleSubmit = (e) => { //TODO: Figure out a new way of doing this
@@ -131,7 +131,6 @@ const OrgDetails = () => {
         for (let i = 0; i < listValue.length && listHook; i++) {
             setLS(listValue[i], listHook[i])
         }
-        console.log(cyberAttackCatScore)
     }
 
     const tabNextButton = () => {
@@ -168,7 +167,8 @@ const OrgDetails = () => {
             </Tabs>
             <TabPanel value={tabValue} index={0}>
                 <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-                    {TextFields(classes.field, setOrgName, orgNameError, "Organisation Name", "secondary", "text", "true", true, "orgName", false)} {TextFields(classes.field, setRegAddress, regAddressError, "Registered Address", "secondary", "text", true, "true", "regAddress", false)}
+                    {TextFields(classes.field, setOrgName, orgNameError, "Organisation Name", "secondary", "text", "true", true, "orgName", false)}
+                    {TextFields(classes.field, setRegAddress, regAddressError, "Registered Address", "secondary", "text", true, "true", "regAddress", false)}
                     {TextFields(classes.field, setCompanyType, companyTypeError, "Company Type", "secondary", "text", "true", true, "companyType", false)}
                     {TextFields(classes.field, setYearOI, yearOIError, "Year Of Incorporation", "secondary", "date", true, "yearOI", true)}
 
@@ -181,9 +181,10 @@ const OrgDetails = () => {
 
                     {SelectsCustom("Which of these IT Models do you use?", classes.label, setItModels, "itModels", true, "secondary", "byod", "id", "mm", "Bring Your Own Device", "Issued Devices", "Mixed Model")}
 
-                    {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
-                    {Buttons(handleSave, classes.bttn, "primary", <SaveOutlinedIcon/>, "Save")}
-                    <br/>
+                    <ButtonGroup>
+                        {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
+                        {Buttons(handleSave, classes.bttn, "primary", <SaveOutlinedIcon/>, "Save")}
+                    </ButtonGroup>
                 </form>
             </TabPanel>
             <TabPanel value={tabValue} index={1}>

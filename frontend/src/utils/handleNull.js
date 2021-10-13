@@ -1,6 +1,6 @@
 const handleNull = (hook, setVariable) => {
     if (hook === 'null') {
-        setVariable('')
+        setVariable('yes')
     }
 }
 

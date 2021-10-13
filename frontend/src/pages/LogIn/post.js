@@ -70,17 +70,16 @@ const post = (username, password, auth) => {
     }
 
 
-    axios.post('http://192.168.227.18:8000/auth/login/', body, config, {withCredentials: false})
+    axios.post('http://192.168.227.21:8000/auth/login/', body, config, {withCredentials: false})
         .then(res => {
             console.log(res);
             loggedIn();
             Cookies.set('jwt', res.data['jwt'], {sameSite: 'lax'});
-            axios.get('http://192.168.227.18:8000/auth/signedin/')
+            axios.get('http://192.168.227.21:8000/auth/signedin/')
                 .then(res => {
                     console.log(res);
                     auth(true);
                     welcome('Placeholder')
-                    window.location.href = "/audit"
                 }).catch(function (error) {
                 console.log(error);
                 failed();
@@ -92,4 +91,4 @@ const post = (username, password, auth) => {
     })
 }
 
-export default post 
+export default post

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 
 // MUI Components
@@ -25,18 +25,19 @@ const useStyles = makeStyles({
       paddingLeft: 14
     },
 })
-
+// eslint-disable-next-line
   const setLS = (value, hook) => (
     localStorage.setItem(value, hook)
   );
-  
+
+// eslint-disable-next-line
   const getLS = (value) => (
     localStorage.getItem(value)
   );
 
 const TabTwo = () => {
     const classes = useStyles;
-
+// eslint-disable-next-line
     const [companySize, setCompanySize] = useState('');
     
     const handleSubmit = (e) => {

@@ -10,10 +10,10 @@ import Grow from '@material-ui/core/Grow';
 const SelectsCustom = (text, className, setVariable, lsVariable, fullWidth, color, value1, value2, value3, value1Label, value2Label, value3Label) => {
     return (
         <>
-            <Grow in="true">
+            <Grow in={true}>
             <InputLabel id="inputLabel" className={className}>{text}</InputLabel>
             </Grow>
-            <Grow in="true">
+            <Grow in={true}>
             <Select
                 onChange={(e => setVariable(e.target.value))}
                 labelId="inputLabel"

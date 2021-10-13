@@ -7,11 +7,9 @@ import TextField from '@material-ui/core/TextField';
 import Grow from '@material-ui/core/Grow';
 
 const ConditionalText = (condition, looking, style, setVariable, required, variableError, lsVariable) => {
-
-    console.log(condition + '' + looking)
     if (condition === looking) {
         return (
-            <Grow in="true" out="true">
+            <Grow in={true}>
                 <TextField
                     onChange={(e) => setVariable(e.target.value)}
                     className={style}
@@ -21,7 +19,7 @@ const ConditionalText = (condition, looking, style, setVariable, required, varia
                     fullWidth
                     multiline
                     rows={4}
-                    required={required}
+                    required={true}
                     error={variableError}
                     defaultValue={localStorage.getItem(lsVariable)}
                     InputLabelProps={{shrink: true}}
