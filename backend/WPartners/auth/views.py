@@ -1,35 +1,28 @@
-from calendar import setfirstweekday
-import re
-from django.db.models.expressions import Value
-from django.http import response
-from django.http.response import HttpResponseBadRequest
-from django.shortcuts import render
-from rest_framework import generics, serializers
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from http import HTTPStatus as status
-from django.contrib.auth.models import User
-from .serializers import CreateUserSerial, loginuser, UserDetails
-from django.contrib.auth import authenticate, get_user_model, login
-from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
 import datetime
+
 import jwt
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .serializers import CreateUserSerial, loginuser, UserDetails
 from .token import Decoder
 from .token import URLCreator
-
 
 
 class Viewthemall(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = CreateUserSerial
 
+
 class createuser(APIView):
     serializer_class = CreateUserSerial
 
     def post(self, request):
         serialzer = self.serializer_class(data=request.data)
-
 
         if serialzer.is_valid():
             username = serialzer.data.get('username')
@@ -41,6 +34,7 @@ class createuser(APIView):
             return HttpResponse(f"USER CREATED {emailurl}", content_type="text/plain")
         else:
             return HttpResponse("USER NOT CREATED", content_type="text/plain", status=400)
+
 
 class loginuser(APIView):
     serializer_class = loginuser
@@ -55,7 +49,6 @@ class loginuser(APIView):
             if user is not None:
 
                 payload = {
-
 
                     'id': user.id,
                     'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
@@ -75,6 +68,7 @@ class loginuser(APIView):
         else:
             return HttpResponse("BAD DATA", content_type="text/plain", status=400)
 
+
 class signedin(APIView):
     def get(self, request):
         token = request.COOKIES.get('jwt')
@@ -89,40 +83,21 @@ class signedin(APIView):
             return HttpResponse("COOKIE DAMAGED", content_type='text/plain', status=400)
         user = User.objects.get(id=data['id'])
         Sdata = UserDetails(user).data
-        print(Sdata) #Edited Lines
+        print(Sdata)  # Edited Lines
         return Response(Sdata)
-        #Do whatever past here TEST CODE ON WIN PC
+        # Do whatever past here TEST CODE ON WIN PC
+
 
 class EmailVerify(APIView):
 
-    def get(self, request, userid):
+    @staticmethod
+    def get(request, userid):
         try:
             user = User.objects.get(id=Decoder(userid))
             user.is_active = True
             return Response('Account activated')
+        # eslint-disable-next-line
         except:
-             return Response('Failed')
-        
+            return Response('Failed')
 
-
-
-
-
-
-
-        
-
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
+# Change

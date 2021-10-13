@@ -29,9 +29,9 @@ ALLOWED_HOSTS = ['*']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = ['http://192.168.1.217:3000']
+CORS_ORIGIN_WHITELIST = ['http://192.168.1.162:3000']
 
-CSRF_TRUSTED_ORIGINS = ['http://192.168.1.217:3000']
+CSRF_TRUSTED_ORIGINS = ['http://192.168.1.162:3000']
 
 
 
@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'auth.apps.AuthConfig',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'Audit.apps.AuditConfig'
 ]
 
 MIDDLEWARE = [
