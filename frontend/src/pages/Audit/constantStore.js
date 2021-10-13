@@ -1,17 +1,14 @@
 import React, {createContext, useState} from 'react';
 import PropTypes from "prop-types";
-import api from "../../utils/API/user";
 
 export const StoreContext = createContext({});
 
-export const handleSave = () => { //TODO: Add in proper support for saving
-    console.log(api.getUserCookie)
-
-}
-
 export const Provider = props => {
+
     const {
+//      Authentication
         auth: clientAuth,
+//      Data
         orgName: userOrgName,
         companyType: userCompanyType,
         regAddress: userRegAddress,
@@ -21,14 +18,28 @@ export const Provider = props => {
         cybInsurance: userCybInsurance,
         insuranceDetails: userInsuranceDetails,
         itModels: userItModels,
+        comSize: userComSize,
+        employees: userEmployees,
+        contractors: userContractors,
+        region: userRegion,
+        indVert: userIndVert,
+        prtCNI: userPrtCNI,
+        srvGov: userSrvGov,
+        srvDef: userSrvDef,
+//      Scoring
+        cyberAttackCatScore: userCybAttackCatScore,
+        cybInsCatScore: usercybInsCatScore,
+        prtCNIScore: userPrtCNIScore,
+        srvGovScore: userSrvGovScore,
+        srvDefScore: userSrvDefScore,
+
         children
     } = props;
 
-    // User Utilities
+    // Authentication Variables
     const [auth, setAuth] = useState(clientAuth);
-    const [userDetails, setUserDetails] = useState("")
 
-    // User Score
+    // Data Variables
     const [orgName, setOrgName] = useState(userOrgName);
     const [companyType, setCompanyType] = useState(userCompanyType);
     const [regAddress, setRegAddress] = useState(userRegAddress);
@@ -38,12 +49,34 @@ export const Provider = props => {
     const [cybInsurance, setCybInsurance] = useState(userCybInsurance);
     const [insuranceDetails, setInsuranceDetails] = useState(userInsuranceDetails);
     const [itModels, setItModels] = useState(userItModels);
+    const [comSize, setComSize] = useState(userComSize);
+    const [employees, setEmployees] = useState(userEmployees);
+    const [contractors, setContractors] = useState(userContractors);
+    const [region, setRegion] = useState(userRegion);
+    const [indVert, setIndVert] = useState(userIndVert);
+    const [prtCNI, setPrtCNI] = useState(userPrtCNI);
+    const [srvGov, setSrvGov] = useState(userSrvGov);
+    const [srvDef, setSrvDef] = useState(userSrvDef);
 
-    const setConstants = {
+    // Score Variables
+    const [cyberAttackCatScore, setCyberAttackCatScore] = useState(userCybAttackCatScore);
+    const [cybInsCatScore, setCybInsCatScore] = useState(usercybInsCatScore);
+    const [prtCNIScore, setPrtCNIScore] = useState(userPrtCNIScore);
+    const [srvGovScore, setSrvGovScore] = useState(userSrvGovScore);
+    const [srvDefScore, setSrvDefScore] = useState(userSrvDefScore);
+
+//
+//  ALL VARIABLES ARE IN THE CORRECT ORDER, QUESTION 1 = VARIABLES 1 & 2, ETC
+//
+    const api = {
+//
+//      Authentication Variables
+//
         auth,
         setAuth,
-        userDetails,
-        setUserDetails,
+//
+//      Data Variables
+//
         orgName,
         setOrgName,
         companyType,
@@ -62,9 +95,39 @@ export const Provider = props => {
         setInsuranceDetails,
         itModels,
         setItModels,
+        comSize,
+        setComSize,
+        employees,
+        setEmployees,
+        contractors,
+        setContractors,
+        region,
+        setRegion,
+        indVert,
+        setIndVert,
+        prtCNI,
+        setPrtCNI,
+        srvGov,
+        setSrvGov,
+        srvDef,
+        setSrvDef,
+//
+//      Score Variables
+//
+        cyberAttackCatScore,
+        setCyberAttackCatScore,
+        cybInsCatScore,
+        setCybInsCatScore,
+        prtCNIScore,
+        setPrtCNIScore,
+        srvGovScore,
+        setSrvGovScore,
+        srvDefScore,
+        setSrvDefScore,
+
     }
 
-    return <StoreContext.Provider value={setConstants}>{children}</StoreContext.Provider>;
+    return <StoreContext.Provider value={api}>{children}</StoreContext.Provider>;
 };
 
 export const {Consumer} = StoreContext;
@@ -79,7 +142,9 @@ Provider.propTypes = {
 };
 
 Provider.defaultProps = {
+//  Authentication
     auth: false,
+//  Data
     orgName: '',
     companyType: '',
     regAddress: '',
@@ -87,7 +152,17 @@ Provider.defaultProps = {
     attackDetails: '',
     cybInsurance: '',
     insuranceDetails: '',
-    itModels: ''
+    itModels: '',
+    employees: 0,
+    contractors: 0,
+    region: '',
+    indVert: '',
+//  Scoring
+    cyberAttackCatScore: 0,
+    cybInsCatScore: 0,
+    prtCNIScore: 0,
+    srvGovScore: 0,
+    srvDefScore: 0,
 };
 
 export default Provider;

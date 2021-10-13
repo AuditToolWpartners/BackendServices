@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 // Transitions from MUI
 import Grow from '@material-ui/core/Grow';
 
-const TextFields = (style, setVariable, variableError, label, color, type, fullWidth, required, lsVariable) => {
+const TextFields = (style, setVariable, label, color, type, fullWidth, lsVariable) => {
     return (
         <Grow in={true}>
             <TextField
@@ -17,8 +17,6 @@ const TextFields = (style, setVariable, variableError, label, color, type, fullW
                 color={color}
                 type={type}
                 fullWidth={true}
-                required={true}
-                error={variableError}
                 defaultValue={localStorage.getItem(lsVariable)}
                 InputLabelProps={{shrink: true}}
             />

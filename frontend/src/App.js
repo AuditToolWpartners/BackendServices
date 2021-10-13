@@ -12,7 +12,6 @@ import Cookies from 'js-cookie';
 
 import StoreProvider, {StoreContext} from './pages/Audit/constantStore';
 
-
 const theme = createTheme({
     palette: {
         primary: {
@@ -74,10 +73,11 @@ const CheckAuth = () => {
     const readCookie = () => {
         const user = Cookies.get("jwt");
         if (user) {
-            axios.get('http://192.168.227.21:8000/auth/signedin/')
+            axios.get('http://192.168.1.214:8000/auth/signedin/')
                 .then(res => {
                     console.log(res)
                     storeConstant.setAuth(true)
+                    console.log(storeConstant.auth)
                 }).catch(function (error) {
                 console.log(error)
                 storeConstant.setAuth(false)
