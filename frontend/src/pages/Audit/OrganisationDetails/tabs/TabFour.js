@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import {StoreContext} from "../../constantStore";
-import TextFields from "../../../../components/TextFields";
 import Selects from "../../../../components/Selects";
 import ConditionalText from "../../../../components/ConditionalText";
 
@@ -41,7 +40,7 @@ const TabFour = () => {
             {Selects("Are you ISO 270001 accredited?", classes.label, api.setISOAccred, "placeholder", true, "secondary", api.setPlaceholder)}
 
             {Selects("Do you have any other relevant accreditations?", classes.label, api.setOtherAccred, "placeholder", true, "secondary", api.setPlaceholder)}
-            {ConditionalText(api.otherAccred, 'yes', classes.field, api.setOtherAccredDetails(), true, "placeholder")}
+            {ConditionalText(api.otherAccred, 'yes', classes.field, api.setOtherAccredDetails, true, "placeholder")}
         </form>
     );
 }
