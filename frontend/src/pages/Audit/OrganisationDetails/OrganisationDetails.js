@@ -10,9 +10,10 @@ import Tab from '@material-ui/core/Tab';
 import Save from "../../../components/Save";
 import Buttons from '../../../components/Buttons';
 import TabPanel from '../../../components/TabPanel';
-import TabTwo from './tabs/TabTwo';
 import TabOne from "./tabs/TabOne";
+import TabTwo from './tabs/TabTwo';
 import TabThree from "./tabs/TabThree";
+import TabFour from "./tabs/TabFour";
 
 // Icons from MUI
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
@@ -91,6 +92,11 @@ const OrgDetails = () => {
             </TabPanel>
             <TabPanel value={tabValue} index={2}>
                 <TabThree/>
+                {Buttons(tabPrevButton, classes.bttn, "primary", <KeyboardArrowLeftIcon/>, "Previous")}
+                {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
+            </TabPanel>
+            <TabPanel value={tabValue} index={3}>
+                <TabFour/>
                 {Buttons(tabPrevButton, classes.bttn, "primary", <KeyboardArrowLeftIcon/>, "Previous")}
                 {Buttons(handleSubmit, classes.bttn, "primary", <KeyboardArrowRightIcon color='secondary'/>, "Submit")}
             </TabPanel>

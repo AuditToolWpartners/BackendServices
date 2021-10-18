@@ -45,7 +45,7 @@ const TabOne = () => {
             {ConditionalText(api.sufCyberAttack, 'yes', classes.fields, api.setAttackDetails, true, "attackDetails")}
             <br/>
 
-            {Selects("Do you have cyber insurance cover?", classes.label, api.setCybInsurance, "cybInsurance", true, "secondary")}
+            {Selects("Do you have cyber insurance cover?", classes.label, api.setCybInsurance, "cybInsurance", true, "secondary", api.setCybInsCatScore)}
             {ConditionalText(api.cybInsurance, 'yes', classes.field, api.setInsuranceDetails, true, "insuranceDetails")}
 
             {SelectsCustom("Which of these IT Models do you use?", classes.label, api.setItModels, true, "secondary", "byod", "id", "mm", "Bring Your Own Device", "Issued Devices", "Mixed Model")}

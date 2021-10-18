@@ -17,16 +17,26 @@ const Save = (className, color) => {
                 "totalAvailableScore": 0,
                 "orgName": api.orgName,
                 "regAddress": api.regAddress,
+                "companyType": api.companyType,
+                "yearOI": api.yearOI,
             },
             digitalFootprint: {
                 "totalAvailableScore": 1,
                 "cybAttackScore": api.cybAttackScore,
-                "sufCyberAttack": api.sufCybAttack,
+                "sufCyberAttack": api.sufCyberAttack,
             },
             industryRisk: {
                 "totalAvailableScore": 1,
                 "prtCNIScore": api.prtCNIScore,
                 "prtCNI": api.prtCNI,
+                "srvGovScore": api.srvGovScore,
+                "srvGov": api.srvGov,
+                "srvDefScore": api.srvDefScore,
+                "srvDef": api.srvDef,
+                "srvCNIScore": api.srvCNIScore,
+                "srvCNI": api.srvCNI,
+                "srvHealthScore": api.srvHealthScore,
+                "srvHealth": api.srvHealth,
             }
         }
      console.log(test)
