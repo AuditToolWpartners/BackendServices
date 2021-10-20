@@ -175,7 +175,7 @@ export const Provider = props => {
         setSrvHealthScore,
         reqPCIScore,
         setReqPCIScore,
-//
+//      This is for the drop down questions that do not need scoring.
         placeholder,
         setPlaceholder,
 

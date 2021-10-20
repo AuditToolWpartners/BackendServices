@@ -9,7 +9,7 @@ import Cookies from 'js-cookie'
 
 const post = (username, password, auth) => {
     axios.defaults.withCredentials = true
-    //Headers
+
     const config = {
         headers: {
             "Content-type": "application/json",
@@ -70,12 +70,12 @@ const post = (username, password, auth) => {
     }
 
 
-    axios.post('http://192.168.1.214:8000/auth/login/', body, config, {withCredentials: false})
+    axios.post('http://192.168.227.18:8000/auth/login/', body, config, {withCredentials: false})
         .then(res => {
             console.log(res);
             loggedIn();
             Cookies.set('jwt', res.data['jwt'], {sameSite: 'lax'});
-            axios.get('http://192.168.1.214:8000/auth/signedin/')
+            axios.get('http://192.168.227.18:8000/auth/signedin/')
                 .then(res => {
                     console.log(res);
                     auth(true);

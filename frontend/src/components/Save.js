@@ -19,6 +19,13 @@ const Save = (className, color) => {
                 "regAddress": api.regAddress,
                 "companyType": api.companyType,
                 "yearOI": api.yearOI,
+                "reqPCI": api.reqPCI,
+                "regICO": api.regICO,
+                "cybEssCert": api.cybEssCert,
+                "gdprAccred": api.gdprAccred,
+                "ISOAccred": api.ISOAccred,
+                "otherAccred": api.otherAccred,
+                "otherAccredDetails": api.otherAccredDetails,
             },
             digitalFootprint: {
                 "totalAvailableScore": 1,
@@ -39,9 +46,9 @@ const Save = (className, color) => {
                 "srvHealth": api.srvHealth,
             }
         }
-     console.log(test)
+     console.log(scores)
 
-        axios.post('http://192.168.1.214:8000/audit/cyberaudit/', scores)
+        axios.post('http://192.168.227.18:8000/audit/cyberaudit/', scores)
             .then(res => {
                 console.log(res);
             }).catch(function (error) {

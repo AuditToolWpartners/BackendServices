@@ -54,7 +54,7 @@ const post = (username, password) => {
     }
 
 
-    axios.post('http://192.168.1.214:8000/auth/createuser/', body, config, {withCredentials: true})
+    axios.post('http://192.168.227.18:8000/auth/createuser/', body, config, {withCredentials: true})
     .then(res => {
         console.log(res)
         created()
