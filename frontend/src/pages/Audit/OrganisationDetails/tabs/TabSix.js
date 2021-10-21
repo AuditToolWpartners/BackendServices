@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import SelectsCustom from "../../../../components/SelectsCustom";
 import {StoreContext} from "../../constantStore";
+import Selects from "../../../../components/Selects";
 import TextFields from "../../../../components/TextFields";
 
 const useStyles = makeStyles({
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     },
 })
 
-const TabTwo = () => {
+const TabFour = () => {
     const classes = useStyles();
     const api = React.useContext(StoreContext);
 
@@ -33,12 +33,11 @@ const TabTwo = () => {
 
     return (
         <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-            {SelectsCustom("Company Size", classes.label, api.setComSize, api.comSize,true, "secondary", "small", "medium", "large", "Small", "Medium", "Large")}
-            {TextFields(classes.field, api.setEmployees, api.employees,"Number of Employees", "secondary", "number", true, "placeholder", true)}
-            {TextFields(classes.field, api.setContractors, api.contractors,"Number of Contractors / Associates", "secondary", "number", true, "placeholder", true)}
-            {TextFields(classes.field, api.setRegion, api.region,"Regions which you operate", "secondary", "text", true, "placeholder", true)}
+            {TextFields(classes.field, api.setSubjectRecords, api.subjectRecords,"How many data subject records do you keep within your technology platforms?", "secondary", "number")}
+            {Selects("Do you store health records?", classes.label, api.setHealthRecords, api.healthRecords, true, "secondary", api.setHealthRecordsScore)}
+            {Selects("Do you process payments?", classes.label, api.setProcessPayments, api.processPayments, true, "secondary", api.setProcessPaymentsScore)}
         </form>
     );
 }
 
-export default TabTwo;
+export default TabFour;

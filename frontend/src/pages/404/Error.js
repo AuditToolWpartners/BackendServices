@@ -4,7 +4,7 @@ import Grow from '@material-ui/core/Grow';
 
 const Error = () => {
     return (
-        <Grow in="true" out="true">
+        <Grow in={true}>
             <body>
             <div id={"title"}>
                 <h1>404</h1>

@@ -14,6 +14,8 @@ import TabOne from "./tabs/TabOne";
 import TabTwo from './tabs/TabTwo';
 import TabThree from "./tabs/TabThree";
 import TabFour from "./tabs/TabFour";
+import TabFive from "./tabs/TabFive";
+import TabSix from "./tabs/TabSix";
 
 // Icons from MUI
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
@@ -42,10 +44,6 @@ const OrgDetails = () => {
     const classes = useStyles();
     const [tabValue, setTabValue] = useState(0);
     useEffect(() => {}, []);
-
-    const handleSubmit = (e) => { //TODO: Figure out a new way of doing this
-        e.preventDefault()
-    };
 
     const tabNextButton = () => {
         setTabValue(tabValue + 1)
@@ -94,11 +92,24 @@ const OrgDetails = () => {
                 <TabThree/>
                 {Buttons(tabPrevButton, classes.bttn, "primary", <KeyboardArrowLeftIcon/>, "Previous")}
                 {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
+                {Save(classes.bttn, "primary","Save")}
             </TabPanel>
             <TabPanel value={tabValue} index={3}>
                 <TabFour/>
                 {Buttons(tabPrevButton, classes.bttn, "primary", <KeyboardArrowLeftIcon/>, "Previous")}
-                {Buttons(handleSubmit, classes.bttn, "primary", <KeyboardArrowRightIcon color='secondary'/>, "Submit")}
+                {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
+                {Save(classes.bttn, "primary","Save")}
+            </TabPanel>
+            <TabPanel value={tabValue} index={4}>
+                <TabFive/>
+                {Buttons(tabPrevButton, classes.bttn, "primary", <KeyboardArrowLeftIcon/>, "Previous")}
+                {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
+                {Save(classes.bttn, "primary","Save")}
+            </TabPanel>
+            <TabPanel value={tabValue} index={5}>
+                <TabSix/>
+                {Buttons(tabPrevButton, classes.bttn, "primary", <KeyboardArrowLeftIcon/>, "Previous")}
+                {Save(classes.bttn, "primary","Save")}
             </TabPanel>
         </Container>
     )

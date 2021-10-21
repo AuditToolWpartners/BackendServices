@@ -77,11 +77,10 @@ const PageSelect = () => {
                 value={value}
                 onChange={handleChange}
                 aria-label="Select Category"
-                className={classes.tabs}
                 textColor="primary"
             >
-                <Tab label='Organisation Details' aicon={<DoneOutlinedIcon/>} className={classes.tabss} {...a11yProps(0)} />
-                <Tab label='Governance & Management' className={classes.tabss} {...a11yProps(1)} />
+                <Tab label='Organisation Details' aicon={<DoneOutlinedIcon/>} {...a11yProps(0)} />
+                <Tab label='Governance & Management' {...a11yProps(1)} />
             </Tabs>
             <TabPanelVertical value={value} index={0}>
                 <OrgDetails/>

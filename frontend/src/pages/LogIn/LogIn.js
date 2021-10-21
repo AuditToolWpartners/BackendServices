@@ -63,10 +63,9 @@ const LogIn = () => {
 
     return (
         <div className="loginPage">
-            <Grow in="true" out="true">
+            <Grow in={true}>
                 <form onSubmit={formik.handleSubmit} className="form">
                     <Grid>
-                        <Grid alignContent='center' alignItems='center' justifyContent='center'>
                             <Paper elevation={24} style={paperStyle}>
                                 <Grid align='center'>
                                     <div className="header">
@@ -111,7 +110,6 @@ const LogIn = () => {
                                     Log In
                                 </Button>
                             </Paper>
-                        </Grid>
                     </Grid>
                 </form>
             </Grow>

@@ -7,7 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Grow from '@material-ui/core/Grow';
 import handleScore from "../utils/handleScore";
 
-const Selects = (text, className, setVariable, lsVariable, fullWidth, color, setCategoryScore) => {
+const Selects = (text, className, setVariable, defaultValueVar, fullWidth, color, setCategoryScore) => {
 
     const handleChange = (value) => {
         setVariable(value)
@@ -23,7 +23,7 @@ const Selects = (text, className, setVariable, lsVariable, fullWidth, color, set
                 <Select
                     onChange={(e => handleChange(e.target.value))}
                     labelId="inputLabel"
-                    defaultValue={""}
+                    defaultValue={defaultValueVar}
                     fullWidth={true}
                     color={color}
                     variant="outlined"

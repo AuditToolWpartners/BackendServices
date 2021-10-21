@@ -31,7 +31,16 @@ export const Provider = props => {
         reqPCI: userReqPCI,
         regICO: userRegICO,
         cybEssCert: userCybEssCert,
-        GdprAccred: userGdprAccred,
+        gdprAccred: userGdprAccred,
+        ISOAccred: userISOAccred,
+        otherAccred: userOtherAccred,
+        otherAccredDetails: userOtherAccredDetails,
+        devSoftware: userDevSoftware,
+        managedServices: userManagedServices,
+        hostingServices: userHostingServices,
+        subjectRecords: userSubjectRecords,
+        healthRecords: userHealthRecords,
+        processPayments: userProcessPayments,
 //      Scoring
         cybAttackScore: userCybAttackScore,
         cybInsCatScore: usercybInsCatScore,
@@ -41,9 +50,11 @@ export const Provider = props => {
         srvCNIScore: userSrvCNIScore,
         srvHealthScore: userSrvHealthScore,
         reqPCIScore: userReqPCIScore,
-        ISOAccred: userISOAccred,
-        otherAccred: userOtherAccred,
-        otherAccredDetails: userOtherAccredDetails,
+        devSoftwareScore: userDevSoftwareScore,
+        managedServicesScore: userManagedServicesScore,
+        hostingServicesScore: userHostingServicesScore,
+        healthRecordsScore: userHealthRecordsScore,
+        processPaymentsScore: userProcessPaymentsScore,
         //
         placeholder: userPlaceholder,
 
@@ -58,8 +69,8 @@ export const Provider = props => {
     const [companyType, setCompanyType] = useState(userCompanyType);
     const [regAddress, setRegAddress] = useState(userRegAddress);
     const [yearOI, setYearOI] = useState(userYearOI);
-    const [attackDetails, setAttackDetails] = useState(userAttackDetails);
     const [sufCyberAttack, setSufCyberAttack] = useState(userSufCyberAttack);
+    const [attackDetails, setAttackDetails] = useState(userAttackDetails);
     const [cybInsurance, setCybInsurance] = useState(userCybInsurance);
     const [insuranceDetails, setInsuranceDetails] = useState(userInsuranceDetails);
     const [itModels, setItModels] = useState(userItModels);
@@ -78,8 +89,14 @@ export const Provider = props => {
     const [cybEssCert, setCybEssCert] = useState(userCybEssCert);
     const [gdprAccred, setGdprAccred] = useState(userGdprAccred);
     const [ISOAccred, setISOAccred] = useState(userISOAccred);
-    const [otherAccred, setOtherAccred] = useState(userOtherAccred)
+    const [otherAccred, setOtherAccred] = useState(userOtherAccred);
     const [otherAccredDetails, setOtherAccredDetails] = useState(userOtherAccredDetails);
+    const [devSoftware, setDevSoftware] = useState(userDevSoftware);
+    const [managedServices, setManagedServices] = useState(userManagedServices);
+    const [hostingServices, setHostingServices] = useState(userHostingServices);
+    const [subjectRecords, setSubjectRecords] = useState(userSubjectRecords);
+    const [healthRecords, setHealthRecords] = useState(userHealthRecords);
+    const [processPayments, setProcessPayments] = useState(userProcessPayments);
     // Score Variables
     const [cybAttackScore, setCybAttackScore] = useState(userCybAttackScore);
     const [cybInsCatScore, setCybInsCatScore] = useState(usercybInsCatScore);
@@ -89,6 +106,11 @@ export const Provider = props => {
     const [srvCNIScore, setSrvCNIScore] = useState(userSrvCNIScore);
     const [srvHealthScore, setSrvHealthScore] = useState(userSrvHealthScore);
     const [reqPCIScore, setReqPCIScore] = useState(userReqPCIScore);
+    const [devSoftwareScore, setDevSoftwareScore] = useState(userDevSoftwareScore);
+    const [managedServicesScore, setManagedServicesScore] = useState(userManagedServicesScore);
+    const [hostingServicesScore, setHostingServicesScore] = useState(userHostingServicesScore);
+    const [healthRecordsScore, setHealthRecordsScore] = useState(userHealthRecordsScore);
+    const [processPaymentsScore, setProcessPaymentsScore] = useState(userProcessPaymentsScore);
     //
     const [placeholder, setPlaceholder] = useState(userPlaceholder);
 
@@ -156,6 +178,18 @@ export const Provider = props => {
         setOtherAccred,
         otherAccredDetails,
         setOtherAccredDetails,
+        devSoftware,
+        setDevSoftware,
+        managedServices,
+        setManagedServices,
+        hostingServices,
+        setHostingServices,
+        subjectRecords,
+        setSubjectRecords,
+        healthRecords,
+        setHealthRecords,
+        processPayments,
+        setProcessPayments,
 //
 //      Score Variables
 //
@@ -175,6 +209,16 @@ export const Provider = props => {
         setSrvHealthScore,
         reqPCIScore,
         setReqPCIScore,
+        devSoftwareScore,
+        setDevSoftwareScore,
+        managedServicesScore,
+        setManagedServicesScore,
+        hostingServicesScore,
+        setHostingServicesScore,
+        healthRecordsScore,
+        setHealthRecordsScore,
+        processPaymentsScore,
+        setProcessPaymentsScore,
 //      This is for the drop down questions that do not need scoring.
         placeholder,
         setPlaceholder,
@@ -203,15 +247,34 @@ Provider.defaultProps = {
     companyType: '',
     regAddress: '',
     yearOI: '',
+    sufCyberAttack: 'no',
     attackDetails: '',
-    cybInsurance: '',
+    cybInsurance: 'no',
     insuranceDetails: '',
-    itModels: '',
+    itModels: 'byod',
+    comSize: 'small',
     employees: 0,
     contractors: 0,
     region: '',
     indVert: '',
+    prtCNI: '',
+    srvGov: '',
+    srvDef: '',
+    srvCNI: '',
+    srvHealth: '',
+    reqPCI: '',
+    regICO: '',
+    cybEssCert: '',
+    gdprAccred: '',
+    ISOAccred: '',
+    otherAccred: '',
     otherAccredDetails: '',
+    devSoftware: '',
+    managedServices: '',
+    hostingServices: '',
+    subjectRecords: 0,
+    healthRecords: '',
+    processPayments: '',
 //  Scoring
     cybAttackScore: 0,
     cybInsCatScore: 0,
@@ -221,6 +284,11 @@ Provider.defaultProps = {
     srvCNIScore: 0,
     srvHealthScore: 0,
     reqPCIScore: 0,
+    devSoftwareScore: 0,
+    managedServicesScore: 0,
+    hostingServicesScore: 0,
+    healthRecordsScore: 0,
+
 //
     placeholder: 0,
 };

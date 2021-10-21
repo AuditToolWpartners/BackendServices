@@ -13,7 +13,7 @@ const Save = (className, color) => {
     axios.defaults.withCredentials = true
     const handleSave = () => {
         const scores = {
-            info: {
+            "info": {
                 "totalAvailableScore": 0,
                 "orgName": api.orgName,
                 "regAddress": api.regAddress,
@@ -25,15 +25,15 @@ const Save = (className, color) => {
                 "gdprAccred": api.gdprAccred,
                 "ISOAccred": api.ISOAccred,
                 "otherAccred": api.otherAccred,
-                "otherAccredDetails": api.otherAccredDetails,
+                "otherAccredDetails": api.otherAccredDetails
             },
-            digitalFootprint: {
+            "digitalFootprint": {
                 "totalAvailableScore": 1,
                 "cybAttackScore": api.cybAttackScore,
-                "sufCyberAttack": api.sufCyberAttack,
+                "sufCyberAttack": api.sufCyberAttack
             },
-            industryRisk: {
-                "totalAvailableScore": 1,
+            "industryRisk": {
+                "totalAvailableScore": 5,
                 "prtCNIScore": api.prtCNIScore,
                 "prtCNI": api.prtCNI,
                 "srvGovScore": api.srvGovScore,
@@ -43,12 +43,19 @@ const Save = (className, color) => {
                 "srvCNIScore": api.srvCNIScore,
                 "srvCNI": api.srvCNI,
                 "srvHealthScore": api.srvHealthScore,
-                "srvHealth": api.srvHealth,
+                "srvHealth": api.srvHealth
             }
         }
      console.log(scores)
+     console.log(scores.info)
 
-        axios.post('http://192.168.227.18:8000/audit/cyberaudit/', scores)
+        const config = {
+            headers: {
+                "Content-type": "application/json",
+            }
+        }
+
+        axios.post('http://192.168.227.18:8004/audit/cyberaudit/', scores, config)
             .then(res => {
                 console.log(res);
             }).catch(function (error) {

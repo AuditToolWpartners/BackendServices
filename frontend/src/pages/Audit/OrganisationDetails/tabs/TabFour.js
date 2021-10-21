@@ -33,14 +33,14 @@ const TabFour = () => {
 
     return (
         <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-            {Selects("Do you require PCI-DSS?", classes.label, api.setReqPCI, "placeholder", true, "secondary", api.setReqPCIScore)}
-            {Selects("Are you registered with the Information Cominssioner's Office?", classes.label, api.setRegICO, "placeholder", true, "secondary", api.setPlaceholder)}
-            {Selects("Are you Cyber Essentials certified?", classes.label, api.setCybEssCert, "placeholder", true, "secondary", api.setPlaceholder)}
-            {Selects("Are you GDPR accredited?", classes.label, api.setGdprAccred, "placeholder", true, "secondary", api.setPlaceholder)}
-            {Selects("Are you ISO 270001 accredited?", classes.label, api.setISOAccred, "placeholder", true, "secondary", api.setPlaceholder)}
+            {Selects("Do you require PCI-DSS?", classes.label, api.setReqPCI, api.reqPCI, true, "secondary", api.setReqPCIScore)}
+            {Selects("Are you registered with the Information Cominssioner's Office?", classes.label, api.setRegICO, api.regICO, true, "secondary", api.setPlaceholder)}
+            {Selects("Are you Cyber Essentials certified?", classes.label, api.setCybEssCert, api.cybEssCert, true, "secondary", api.setPlaceholder)}
+            {Selects("Are you GDPR accredited?", classes.label, api.setGdprAccred, api.gdprAccred, true, "secondary", api.setPlaceholder)}
+            {Selects("Are you ISO 270001 accredited?", classes.label, api.setISOAccred, api.ISOAccred, true, "secondary", api.setPlaceholder)}
 
-            {Selects("Do you have any other relevant accreditations?", classes.label, api.setOtherAccred, "placeholder", true, "secondary", api.setPlaceholder)}
-            {ConditionalText(api.otherAccred, 'yes', classes.field, api.setOtherAccredDetails, true, "placeholder")}
+            {Selects("Do you have any other relevant accreditations?", classes.label, api.setOtherAccred, api.otherAccred, true, "secondary", api.setPlaceholder)}
+            {ConditionalText(api.otherAccred, 'yes', classes.field, api.setOtherAccredDetails, api.otherAccredDetails)}
         </form>
     );
 }

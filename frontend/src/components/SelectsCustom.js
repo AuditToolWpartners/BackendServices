@@ -7,7 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Grow from '@material-ui/core/Grow';
 
 
-const SelectsCustom = (text, className, setVariable, fullWidth, color, value1, value2, value3, value1Label, value2Label, value3Label) => {
+const SelectsCustom = (text, className, setVariable, defaultValueVar, fullWidth, color, value1, value2, value3, value1Label, value2Label, value3Label) => {
     return (
         <>
             <Grow in={true}>
@@ -17,7 +17,7 @@ const SelectsCustom = (text, className, setVariable, fullWidth, color, value1, v
             <Select
                 onChange={(e => setVariable(e.target.value))}
                 labelId="inputLabel"
-                defaultValue={""}
+                defaultValue={defaultValueVar}
                 fullWidth={fullWidth}
                 color={color}
                 variant="outlined"

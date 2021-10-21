@@ -36,19 +36,19 @@ const TabOne = () => {
 
     return (
         <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-            {TextFields(classes.field, api.setOrgName, "Organisation Name", "secondary", "text", "true", true, "orgName", false)}
-            {TextFields(classes.field, api.setRegAddress, "Registered Address", "secondary", "text", true, "true", "regAddress", false)}
-            {TextFields(classes.field, api.setCompanyType, "Company Type", "secondary", "text", "true", true, "companyType", false)}
-            {TextFields(classes.field, api.setYearOI, "Year Of Incorporation", "secondary", "date", true, "yearOI", true)}
+            {TextFields(classes.field, api.setOrgName, api.orgName,"Organisation Name", "secondary", "text")}
+            {TextFields(classes.field, api.setRegAddress, api.regAddress,"Registered Address", "secondary", "text")}
+            {TextFields(classes.field, api.setCompanyType, api.companyType,"Company Type", "secondary", "text")}
+            {TextFields(classes.field, api.setYearOI, api.yearOI,"Year Of Incorporation", "secondary", "date")}
 
-            {Selects("Have you suffered a cyber attack which has affected operations?", classes.label, api.setSufCyberAttack, "sufCyberAttack", true, "secondary", api.setCybAttackScore)}
-            {ConditionalText(api.sufCyberAttack, 'yes', classes.fields, api.setAttackDetails, true, "attackDetails")}
+            {Selects("Have you suffered a cyber attack which has affected operations?", classes.label, api.setSufCyberAttack, api.sufCyberAttack, true, "secondary", api.setCybAttackScore)}
+            {ConditionalText(api.sufCyberAttack, 'yes', classes.fields, api.setAttackDetails, api.attackDetails)}
             <br/>
 
-            {Selects("Do you have cyber insurance cover?", classes.label, api.setCybInsurance, "cybInsurance", true, "secondary", api.setCybInsCatScore)}
-            {ConditionalText(api.cybInsurance, 'yes', classes.field, api.setInsuranceDetails, true, "insuranceDetails")}
+            {Selects("Do you have cyber insurance cover?", classes.label, api.setCybInsurance, api.cybInsurance, true, "secondary", api.setCybInsCatScore)}
+            {ConditionalText(api.cybInsurance, 'yes', classes.field, api.setInsuranceDetails, api.insuranceDetails)}
 
-            {SelectsCustom("Which of these IT Models do you use?", classes.label, api.setItModels, true, "secondary", "byod", "id", "mm", "Bring Your Own Device", "Issued Devices", "Mixed Model")}
+            {SelectsCustom("Which of these IT Models do you use?", classes.label, api.setItModels, api.itModels,true, "secondary", "byod", "id", "mm", "Bring Your Own Device", "Issued Devices", "Mixed Model")}
         </form>
 
         )
