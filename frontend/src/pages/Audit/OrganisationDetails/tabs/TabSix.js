@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     },
 })
 
-const TabFour = () => {
+const TabSix = () => {
     const classes = useStyles();
     const api = React.useContext(StoreContext);
 
@@ -40,4 +40,4 @@ const TabFour = () => {
     );
 }
 
-export default TabFour;
+export default TabSix;

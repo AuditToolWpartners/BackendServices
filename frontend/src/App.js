@@ -9,6 +9,7 @@ import 'react-notifications-component/dist/theme.css'
 import LogIn from './pages/LogIn/LogIn';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+// import LogRocket from "logrocket";
 
 import StoreProvider, {StoreContext} from './pages/Audit/constantStore';
 
@@ -39,6 +40,7 @@ const theme = createTheme({
 
 
 const App = () => {
+    // LogRocket.init('sxx3z0/at-prototype');
     return (
         <ThemeProvider theme={theme}>
             <ReactNotification/>

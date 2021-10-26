@@ -11,6 +11,7 @@ import DoneOutlinedIcon from '@material-ui/icons/DoneOutlined';
 // Local Components
 import OrgDetails from './OrganisationDetails/OrganisationDetails';
 import PropTypes from 'prop-types';
+import Governance from "./Governance/Governance";
 
 const TabPanelVertical = (props) => {
     const { children, value, index, ...other } = props;
@@ -81,12 +82,31 @@ const PageSelect = () => {
             >
                 <Tab label='Organisation Details' aicon={<DoneOutlinedIcon/>} {...a11yProps(0)} />
                 <Tab label='Governance & Management' {...a11yProps(1)} />
+                <Tab label='Training' {...a11yProps(2)} />
+                <Tab label='Identity & Access Management' {...a11yProps(3)} />
+                <Tab label='Data Protection' {...a11yProps(4)} />
+                <Tab label='Personnel Security' {...a11yProps(5)} />
+                <Tab label='Supply Chain Security' {...a11yProps(6)} />
+                <Tab label='Device Asset Security' {...a11yProps(7)} />
+
             </Tabs>
             <TabPanelVertical value={value} index={0}>
                 <OrgDetails/>
             </TabPanelVertical>
             <TabPanelVertical value={value} index={1}>
-                <p>Testing</p>
+                <Governance/>
+            </TabPanelVertical>
+            <TabPanelVertical value={value} index={2}>
+            </TabPanelVertical>
+            <TabPanelVertical value={value} index={3}>
+            </TabPanelVertical>
+            <TabPanelVertical value={value} index={4}>
+            </TabPanelVertical>
+            <TabPanelVertical value={value} index={5}>
+            </TabPanelVertical>
+            <TabPanelVertical value={value} index={6}>
+            </TabPanelVertical>
+            <TabPanelVertical value={value} index={7}>
             </TabPanelVertical>
         </div>
 

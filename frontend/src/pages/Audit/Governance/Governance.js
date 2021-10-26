@@ -11,17 +11,14 @@ import Save from "../../../components/Save";
 import Buttons from '../../../components/Buttons';
 import TabPanel from '../../../components/TabPanel';
 import TabOne from "./tabs/TabOne";
-import TabTwo from './tabs/TabTwo';
+import TabTwo from "./tabs/TabTwo";
 import TabThree from "./tabs/TabThree";
-import TabFour from "./tabs/TabFour";
-import TabFive from "./tabs/TabFive";
-import TabSix from "./tabs/TabSix";
-import TabSeven from "./tabs/TabSeven";
-import TabEight from "./tabs/TabEight";
 
 // Icons from MUI
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import TabFour from "./tabs/TabFour";
+import TabFive from "./tabs/TabFive";
 
 const useStyles = makeStyles({
     field: {
@@ -42,7 +39,7 @@ const useStyles = makeStyles({
     }
 })
 
-const OrgDetails = () => {
+const Governance = () => {
     const classes = useStyles();
     const [tabValue, setTabValue] = useState(0);
     useEffect(() => {}, []);
@@ -67,11 +64,16 @@ const OrgDetails = () => {
     }
 
     const handleKeyDown = (e) => {
-        if (e.keyCode === 37 && tabValue > 0) {
-            setTabValue(tabValue - 1)
-        } else if (e.keyCode === 39 && tabValue <= 6) {
-            setTabValue(tabValue + 1)
-        } else {
+        switch(e.keyCode) {
+            case 37:
+                if (tabValue > 0) {
+                    setTabValue(tabValue - 1)
+                } break
+            case 39:
+                if (tabValue <= 5) {
+                    setTabValue(tabValue + 1)
+                } break
+            default: return
         }
     }
 
@@ -85,12 +87,11 @@ const OrgDetails = () => {
                 <Tab label="1.5" {...a11yProps(5)} />
                 <Tab label="1.6" {...a11yProps(6)} />
                 <Tab label="1.7" {...a11yProps(7)} />
-                <Tab label="1.8" {...a11yProps(8)} />
-
+                <Tab label="" {...a11yProps(8)} />
             </Tabs>
             {document.onkeydown = handleKeyDown}
             <TabPanel value={tabValue} index={0}>
-                <TabOne />
+                <TabOne/>
                 {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
                 {Save(classes.bttn, "primary","Save")}
             </TabPanel>
@@ -119,19 +120,11 @@ const OrgDetails = () => {
                 {Save(classes.bttn, "primary","Save")}
             </TabPanel>
             <TabPanel value={tabValue} index={5}>
-                <TabSix/>
                 {Buttons(tabPrevButton, classes.bttn, "primary", <KeyboardArrowLeftIcon/>, "Previous")}
                 {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
                 {Save(classes.bttn, "primary","Save")}
             </TabPanel>
             <TabPanel value={tabValue} index={6}>
-                <TabSeven/>
-                {Buttons(tabPrevButton, classes.bttn, "primary", <KeyboardArrowLeftIcon/>, "Previous")}
-                {Buttons(tabNextButton, classes.bttn, "primary", <KeyboardArrowRightIcon/>, "Next")}
-                {Save(classes.bttn, "primary","Save")}
-            </TabPanel>
-            <TabPanel value={tabValue} index={7}>
-                <TabEight/>
                 {Buttons(tabPrevButton, classes.bttn, "primary", <KeyboardArrowLeftIcon/>, "Previous")}
                 {Save(classes.bttn, "primary","Save")}
             </TabPanel>
@@ -140,4 +133,4 @@ const OrgDetails = () => {
 
 }
 
-export default OrgDetails;
+export default Governance;

@@ -16,6 +16,7 @@
     "dotenv": "^10.0.0",
     "formik": "^2.2.9",
     "js-cookie": "^3.0.1",
+    "logrocket": "^2.1.1",
     "particles-bg": "^2.5.5",
     "postcss-preset-env": "^6.7.0",
     "prop-types": "^15.7.2",

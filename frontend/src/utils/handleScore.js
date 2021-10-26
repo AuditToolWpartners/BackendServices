@@ -12,6 +12,5 @@ const handleScore = (variable, setCategoryScore, setNistScore) => { //TODO: Add 
             break;
     }
 }
-//TODO: Figure out how to score for SelectsCustom.js
 
 export default handleScore
