@@ -38,7 +38,7 @@ const useStyles = makeStyles({
         marginTop: 20,
         fontSize: 14,
         textAlign: 'left',
-        paddingLeft: 14
+        paddingLeft: 15
     }
 })
 
