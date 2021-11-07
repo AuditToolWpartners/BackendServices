@@ -116,7 +116,7 @@ const Save = (className, color) => {
                 "processPayments": api.processPayments,
             },
             "governance": {
-                "totalScoreAvailable": 4,
+                "totalScoreAvailable": 13,
                 "individualResponsibleScore": api.individualResponsibleScore,
                 "individualResponsible": api.individualResponsible,
                 "responsibleDocScore": api.responsibleDocScore,
@@ -125,9 +125,28 @@ const Save = (className, color) => {
                 "budgetSecurity": api.budgetSecurity,
                 "dataProtectionOfficerScore": api.dataProtectionOfficerScore,
                 "dataProtectionOfficer": api.dataProtectionOfficer,
+                "riskManagementScore": api.riskManagementScore,
+                "riskManagement": api.riskManagement,
+                "networkSecurityScore": api.networkSecurityScore,
+                "networkSecurity": api.networkSecurity,
+                "accessControlScore": api.accessControlScore,
+                "accessControl": api.accessControl,
+                "vulnerabilityManagementScore": api.vulnerabilityManagementScore,
+                "vulnerabilityManagement": api.vulnerabilityManagement,
+                "testingScore": api.testingScore,
+                "testing": api.testing,
+                "threatIntelligenceScore": api.threatIntelligenceScore,
+                "threatIntelligence": api.threatIntelligence,
+                "incidentResponseScore": api.incidentResponseScore,
+                "incidentResponse": api.incidentResponse,
+                "backupRecoveryScore": api.backupRecoveryScore,
+                "backupRecovery": api.backupRecovery,
+                "trainingAwarenessScore": api.trainingAwarenessScore,
+                "trainingAwareness": api.trainingAwareness,
+
             },
             "riskManagement": {
-                "totalScoreAvailable": 7,
+                "totalScoreAvailable": 9,
                 "riskRegisterScore": api.riskRegisterScore,
                 "riskRegister": api.riskRegister,
                 "reviewedLeadershipScore": api.reviewedLeadershipScore,
@@ -142,9 +161,13 @@ const Save = (className, color) => {
                 "strategyReviewed": api.strategyReviewed,
                 "roadmapLeadershipScore": api.roadmapLeadershipScore,
                 "roadmapLeadership": api.roadmapLeadership,
+                "assetRegisterScore": api.assetRegisterScore,
+                "assetRegister": api.assetRegister,
+                "crownJewlsScore": api.crownJewlsScore,
+                "crownJewls": api.crownJewls,
             },
             "policy": {
-                "totalScoreAvailable": 1,
+                "totalScoreAvailable": 10,
                 "passwordPolicyScore": api.passwordPolicyScore,
                 "passwordPolicy": api.passwordPolicy,
                 "securityPolicyScore": api.securityPolicyScore,
@@ -167,8 +190,6 @@ const Save = (className, color) => {
                 "policiesToldToStaff": api.policiesToldToStaff,
             }
         }
-        console.log(scores)
-        console.log(scores.info)
 
         const config = {
             headers: {

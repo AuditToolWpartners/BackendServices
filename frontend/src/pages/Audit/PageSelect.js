@@ -12,6 +12,7 @@ import DoneOutlinedIcon from '@material-ui/icons/DoneOutlined';
 import OrgDetails from './OrganisationDetails/OrganisationDetails';
 import PropTypes from 'prop-types';
 import Governance from "./Governance/Governance";
+import Training from "./Training/Training";
 
 const TabPanelVertical = (props) => {
     const { children, value, index, ...other } = props;
@@ -97,6 +98,7 @@ const PageSelect = () => {
                 <Governance/>
             </TabPanelVertical>
             <TabPanelVertical value={value} index={2}>
+                <Training/>
             </TabPanelVertical>
             <TabPanelVertical value={value} index={3}>
             </TabPanelVertical>

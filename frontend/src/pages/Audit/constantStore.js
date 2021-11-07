@@ -76,6 +76,17 @@ export const Provider = props => {
         policiesUpdated: userPoliciesUpdated,
         policiesToldToStaff: userPoliciesToldToStaff,
         dataProtectionOfficer: userDataProtectionOfficer,
+        riskManagement: userRiskManagement,
+        networkSecurity: userNetworkSecurity,
+        accessControl: userAccessControl,
+        vulnerabilityManagement: userVulnerabilityManagement,
+        testing: userTesting,
+        threatIntelligence: userThreatIntelligence,
+        incidentResponse: userIncidentResponse,
+        backupRecovery: userBackupRecovery,
+        trainingAwareness: userTrainingAwareness,
+        assetRegister: userAssetRegister,
+        crownJewls: userCrownJewls,
         // Scoring
         cybAttackScore: userCybAttackScore,
         cybInsCatScore: usercybInsCatScore,
@@ -116,6 +127,17 @@ export const Provider = props => {
         policiesUpdatedScore: userPoliciesUpdatedScore,
         policiesToldToStaffScore: userPoliciesToldToStaffScore,
         DataProtectionOfficerScore: userDataProtectionOfficerScore,
+        riskManagementScore: userRiskManagementScore,
+        networkSecurityScore: userNetworkSecurityScore,
+        accessControlScore: userAccessControlScore,
+        vulnerabilityManagementScore: userVulnerabilityManagementScore,
+        testingScore: userTestingScore,
+        threatIntelligenceScore: userThreatIntelligenceScore,
+        incidentResponseScore: userIncidentResponseScore,
+        backupRecoveryScore: userBackupRecoveryScore,
+        trainingAwarenessScore: userTrainingAwarenessScore,
+        assetRegisterScore: userAssetRegisterScore,
+        crownJewlsScore: userCrownJewlsScore,
 
         // Placeholder
         placeholder: userPlaceholder,
@@ -194,6 +216,17 @@ export const Provider = props => {
     const [policiesUpdated, setPoliciesUpdated] = useState(userPoliciesUpdated); // Policy
     const [policiesToldToStaff, setPoliciesToldToStaff] = useState(userPoliciesToldToStaff); // Policy
     const [dataProtectionOfficer, setDataProtectionOfficer] = useState(userDataProtectionOfficer); // Governanace
+    const [riskManagement, setRiskManagement] = useState(userRiskManagement); // Governance
+    const [networkSecurity, setNetworkSecurity] = useState(userNetworkSecurity); // Governance
+    const [accessControl, setAccessControl] = useState(userAccessControl); // Governance
+    const [vulnerabilityManagement, setVulnerabilityManagement] = useState(userVulnerabilityManagement); // Governance
+    const [testing, setTesting] = useState(userTesting); // Governance
+    const [threatIntelligence, setThreatIntelligence] = useState(userThreatIntelligence); // Governance
+    const [incidentResponse, setIncidentResponse] = useState(userIncidentResponse); // Governance
+    const [backupRecovery, setBackupRecovery] = useState(userBackupRecovery); // Governance
+    const [trainingAwareness, setTrainingAwareness] = useState(userTrainingAwareness); // Governance
+    const [assetRegister, setAsssetRegister] = useState(userAssetRegister);
+    const [crownJewls, setCrownJewls] = useState(userCrownJewls);
     // Score Variables
     const [cybAttackScore, setCybAttackScore] = useState(userCybAttackScore);
     const [cybInsCatScore, setCybInsCatScore] = useState(usercybInsCatScore);
@@ -234,6 +267,17 @@ export const Provider = props => {
     const [policiesUpdatedScore, setPoliciesUpdatedScore] = useState(userPoliciesUpdatedScore);
     const [policiesToldToStaffScore, setPoliciesToldToStaffScore] = useState(userPoliciesToldToStaffScore);
     const [dataProtectionOfficerScore, setDataProtectionOfficerScore] = useState(userDataProtectionOfficerScore);
+    const [riskManagementScore, setRiskManagementScore] = useState(userRiskManagementScore);
+    const [networkSecurityScore, setNetworkSecurityScore] = useState(userNetworkSecurityScore);
+    const [accessControlScore, setAccessControlScore] = useState(userAccessControlScore);
+    const [vulnerabilityManagementScore, setVulnerabilityManagementScore] = useState(userVulnerabilityManagementScore);
+    const [testingScore, setTestingScore] = useState(userTestingScore);
+    const [threatIntelligenceScore, setThreatIntelligenceScore] = useState(userThreatIntelligenceScore);
+    const [incidentResponseScore, setIncidentResponseScore] = useState(userIncidentResponseScore);
+    const [backupRecoveryScore, setBackupRecoveryScore] = useState(userBackupRecoveryScore);
+    const [trainingAwarenessScore, setTrainingAwarenessScore] = useState(userTrainingAwarenessScore);
+    const [assetRegisterScore, setAsssetRegisterScore] = useState(userAssetRegisterScore);
+    const [crownJewlsScore, setCrownJewlsScore] = useState(userCrownJewlsScore);
     //
     const [placeholder, setPlaceholder] = useState(userPlaceholder);
 
@@ -382,6 +426,28 @@ export const Provider = props => {
         setPoliciesToldToStaff,
         dataProtectionOfficer,
         setDataProtectionOfficer,
+        riskManagement,
+        setRiskManagement,
+        networkSecurity,
+        setNetworkSecurity,
+        accessControl,
+        setAccessControl,
+        vulnerabilityManagement,
+        setVulnerabilityManagement,
+        testing,
+        setTesting,
+        threatIntelligence,
+        setThreatIntelligence,
+        incidentResponse,
+        setIncidentResponse,
+        backupRecovery,
+        setBackupRecovery,
+        trainingAwareness,
+        setTrainingAwareness,
+        assetRegister,
+        setAsssetRegister,
+        crownJewls,
+        setCrownJewls,
 //
 //      Score Variables
 //
@@ -462,6 +528,28 @@ export const Provider = props => {
         setPoliciesToldToStaffScore,
         dataProtectionOfficerScore,
         setDataProtectionOfficerScore,
+        riskManagementScore,
+        setRiskManagementScore,
+        networkSecurityScore,
+        setNetworkSecurityScore,
+        accessControlScore,
+        setAccessControlScore,
+        vulnerabilityManagementScore,
+        setVulnerabilityManagementScore,
+        testingScore,
+        setTestingScore,
+        threatIntelligenceScore,
+        setThreatIntelligenceScore,
+        incidentResponseScore,
+        setIncidentResponseScore,
+        backupRecoveryScore,
+        setBackupRecoveryScore,
+        trainingAwarenessScore,
+        setTrainingAwarenessScore,
+        assetRegisterScore,
+        setAsssetRegisterScore,
+        crownJewlsScore,
+        setCrownJewlsScore,
 //      This is for the drop down questions that do not need scoring.
         placeholder,
         setPlaceholder,
@@ -551,6 +639,15 @@ Provider.defaultProps = {
     policiesUpdated: '',
     policiesToldToStaff: '',
     dataProtectionOfficer: '',
+    riskManagement: '',
+    networkSecurity: '',
+    accessControl: '',
+    vulnerabilityManagement: '',
+    testing: '',
+    threatIntelligence: '',
+    incidentResponse: '',
+    backupRecovery: '',
+    trainingAwareness: '',
 //  Scoring
     cybAttackScore: 0,
     cybInsCatScore: 0,
@@ -591,6 +688,15 @@ Provider.defaultProps = {
     policiesUpdatedScore: 0,
     policiesToldToStaffScore: 0,
     dataProtectionOfficerScore: 0,
+    riskManagementScore: 0,
+    networkSecurityScore: 0,
+    accessControlScore: 0,
+    vulnerabilityManagementScore: 0,
+    testingScore: 0,
+    threatIntelligenceScore: 0,
+    incidentResponseScore: 0,
+    backupRecoveryScore: 0,
+    trainingAwarenessScore: 0,
     // Placeholder
     placeholder: 0,
 };
