@@ -13,6 +13,7 @@ import OrgDetails from './OrganisationDetails/OrganisationDetails';
 import PropTypes from 'prop-types';
 import Governance from "./Governance/Governance";
 import Training from "./Training/Training";
+import IdentityAndAccessManagement from "./IdentityAndAccessManagement/IdentityAndAccessManagement";
 
 const TabPanelVertical = (props) => {
     const { children, value, index, ...other } = props;
@@ -89,7 +90,6 @@ const PageSelect = () => {
                 <Tab label='Personnel Security' {...a11yProps(5)} />
                 <Tab label='Supply Chain Security' {...a11yProps(6)} />
                 <Tab label='Device Asset Security' {...a11yProps(7)} />
-
             </Tabs>
             <TabPanelVertical value={value} index={0}>
                 <OrgDetails/>
@@ -101,6 +101,7 @@ const PageSelect = () => {
                 <Training/>
             </TabPanelVertical>
             <TabPanelVertical value={value} index={3}>
+                <IdentityAndAccessManagement/>
             </TabPanelVertical>
             <TabPanelVertical value={value} index={4}>
             </TabPanelVertical>

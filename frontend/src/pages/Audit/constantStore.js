@@ -87,6 +87,32 @@ export const Provider = props => {
         trainingAwareness: userTrainingAwareness,
         assetRegister: userAssetRegister,
         crownJewls: userCrownJewls,
+        // Training
+        staffTraining: userStaffTraining,
+        staffTrainingUpdates: userStaffTrainingUpdates,
+        phisingTraining: userPhishingTraining,
+        passwordTraining: userPasswordTraining,
+        secureWorkingTraining: userSecureWorkingTraining,
+        protectionTraining: userProtectionTraining,
+        securityIncidentTraining: userSecurityIncidentTraining,
+        emailTraining: userEmailTraining,
+        socialMediaTraining: userSocialMediaTraining,
+        secAware: userSecAware,
+        regTraining: userRegTraining,
+        //IAAM
+        dataRestriction: userDataRestriction,
+        confidentialInfo: userConfidentialInfo,
+        administratorAccess: userAdministratorAccess,
+        limitAdminAccess: userLimitAdminAcess,
+        adminRestriction: userAdminRestriction,
+        generateAlerts: userGenerateAlerts,
+        complexityReqPass: userComplexReqPass,
+        complexReqAdminPass: userComplexReqAdminPass,
+        passwordManagement: userPasswordManagement,
+        onBoardingStaff: userOnBoardingStaff,
+        offBoardingStaff: userOffBoardingStaff,
+        systemsData: userSystemsData,
+        obsoleteUser: userObsoleteUser,
         // Scoring
         cybAttackScore: userCybAttackScore,
         cybInsCatScore: usercybInsCatScore,
@@ -138,7 +164,32 @@ export const Provider = props => {
         trainingAwarenessScore: userTrainingAwarenessScore,
         assetRegisterScore: userAssetRegisterScore,
         crownJewlsScore: userCrownJewlsScore,
-
+        // Training
+        staffTrainingScore: userStaffTrainingScore,
+        staffTrainingUpdatesScore: userStaffTrainingUpdatesScore,
+        phisingTrainingScore: userPhishingTrainingScore,
+        passwordTrainingScore: userPasswordTrainingScore,
+        secureWorkingTrainingScore: userSecureWorkingTrainingScore,
+        protectionTrainingScore: userProtectionTrainingScore,
+        securityIncidentTrainingScore: userSecurityIncidentTrainingScore,
+        emailTrainingScore: userEmailTrainingScore,
+        socialMediaTrainingScore: userSocialMediaTrainingScore,
+        secAwareScore: userSecAwareScore,
+        regTrainingScore: userRegTrainingScore,
+        // IAAM
+        dataRestrictionScore: userDataRestrictionScore,
+        confidentialInfoScore: userConfidentialInfoScore,
+        administratorAccessScore: userAdministratorAccessScore,
+        limitAdminAccessScore: userLimitAdminAcessScore,
+        adminRestrictionScore: userAdminRestrictionScore,
+        generateAlertsScore: userGenerateAlertsScore,
+        complexityReqPassScore: userComplexReqPassScore,
+        complexReqAdminPassScore: userComplexReqAdminPassScore,
+        passwordManagementScore: userPasswordManagementScore,
+        onBoardingStaffScore: userOnBoardingStaffScore,
+        offBoardingStaffScore: userOffBoardingStaffScore,
+        systemsDataScore: userSystemsDataScore,
+        obsoleteUserScore: userObsoleteUserScore,
         // Placeholder
         placeholder: userPlaceholder,
 
@@ -225,8 +276,34 @@ export const Provider = props => {
     const [incidentResponse, setIncidentResponse] = useState(userIncidentResponse); // Governance
     const [backupRecovery, setBackupRecovery] = useState(userBackupRecovery); // Governance
     const [trainingAwareness, setTrainingAwareness] = useState(userTrainingAwareness); // Governance
-    const [assetRegister, setAsssetRegister] = useState(userAssetRegister);
-    const [crownJewls, setCrownJewls] = useState(userCrownJewls);
+    const [assetRegister, setAsssetRegister] = useState(userAssetRegister); // Risk Assessment
+    const [crownJewls, setCrownJewls] = useState(userCrownJewls); // Risk Assessment
+    // Training
+    const [staffTraining, setStaffTraining] = useState(userStaffTraining); // Training
+    const [staffTrainingUpdates, setStaffTrainingUpdates] = useState(userStaffTrainingUpdates); // Training
+    const [phishingTraining, setPhishingTraining] = useState(userPhishingTraining); // Training
+    const [passwordTraining, setPasswordTraining] = useState(userPasswordTraining); // Training
+    const [secureWorkingTraining, setSecureWorkingTraining] = useState(userSecureWorkingTraining) // Training;
+    const [protectionTraining, setProtectionTraining] = useState(userProtectionTraining); // Training
+    const [securityIncidentTraining, setSecurityIncidentTraining] = useState(userSecurityIncidentTraining); // Training
+    const [emailTraining, setEmailTraining] = useState(userEmailTraining); // Training
+    const [socialMediaTraining, setSocialMediaTraining] = useState(userSocialMediaTraining); // Training
+    const [secAware, setSecAware] = useState(userSecAware); // Training
+    const [regTraining, setRegTraining] = useState(userRegTraining); // Training
+    // IAAM
+    const [dataRestriction, setDataRestriction] = useState(userDataRestriction); // IAM
+    const [confidentialInfo, setConfidentialInfo] = useState(userConfidentialInfo); // IAM
+    const [administratorAccess, setAdministratorAccess] = useState(userAdministratorAccess); // IAM
+    const [limitAdminAccess, setLimitAdminAccess] = useState(userLimitAdminAcess); // IAM
+    const [adminRestriction, setAdminRestriction] = useState(userAdminRestriction); // IAM
+    const [generateAlerts, setGenerateAlerts] = useState(userGenerateAlerts); // IAM
+    const [complexityReqPass, setComplexityReqPass] = useState(userComplexReqPass); // Policy
+    const [complexReqAdminPass, setComplexReqAdminPass] = useState(userComplexReqAdminPass); // Policy
+    const [passwordManagement, setPasswordManagment] = useState(userPasswordManagement); // IAM
+    const [onBoardingStaff, setOnBoardingStaff] = useState(userOnBoardingStaff);
+    const [offBoardingStaff, setOffBoardingStaff] = useState(userOffBoardingStaff);
+    const [systemsData, setSystemsData] = useState(userSystemsData);
+    const [obsoleteUser, setObsoleteUser] = useState(userObsoleteUser);
     // Score Variables
     const [cybAttackScore, setCybAttackScore] = useState(userCybAttackScore);
     const [cybInsCatScore, setCybInsCatScore] = useState(usercybInsCatScore);
@@ -278,7 +355,34 @@ export const Provider = props => {
     const [trainingAwarenessScore, setTrainingAwarenessScore] = useState(userTrainingAwarenessScore);
     const [assetRegisterScore, setAsssetRegisterScore] = useState(userAssetRegisterScore);
     const [crownJewlsScore, setCrownJewlsScore] = useState(userCrownJewlsScore);
-    //
+    // Training
+    const [staffTrainingScore, setStaffTrainingScore] = useState(userStaffTrainingScore);
+    const [staffTrainingUpdatesScore, setStaffTrainingUpdatesScore] = useState(userStaffTrainingUpdatesScore);
+    const [phishingTrainingScore, setPhishingTrainingScore] = useState(userPhishingTrainingScore);
+    const [passwordTrainingScore, setPasswordTrainingScore] = useState(userPasswordTrainingScore);
+    const [secureWorkingTrainingScore, setSecureWorkingTrainingScore] = useState(userSecureWorkingTrainingScore);
+    const [protectionTrainingScore, setProtectionTrainingScore] = useState(userProtectionTrainingScore);
+    const [securityIncidentTrainingScore, setSecurityIncidentTrainingScore] = useState(userSecurityIncidentTrainingScore);
+    const [emailTrainingScore, setEmailTrainingScore] = useState(userEmailTrainingScore);
+    const [socialMediaTrainingScore, setSocialMediaTrainingScore] = useState(userSocialMediaTrainingScore);
+    const [secAwareScore, setSecAwareScore] = useState(userSecAwareScore);
+    const [regTrainingScore, setRegTrainingScore] = useState(userRegTrainingScore);
+    // IAAM
+    const [dataRestrictionScore, setDataRestrictionScore] = useState(userDataRestrictionScore); // IAM
+    const [confidentialInfoScore, setConfidentialInfoScore] = useState(userConfidentialInfoScore); // IAM
+    const [administratorAccessScore, setAdministratorAccessScore] = useState(userAdministratorAccessScore); // IAM
+    const [limitAdminAccessScore, setLimitAdminAccessScore] = useState(userLimitAdminAcessScore); // IAM
+    const [adminRestrictionScore, setAdminRestrictionScore] = useState(userAdminRestrictionScore); // IAM
+    const [generateAlertsScore, setGenerateAlertsScore] = useState(userGenerateAlertsScore); // IAM
+    const [complexityReqPassScore, setComplexityReqPassScore] = useState(userComplexReqPassScore); // Policy
+    const [complexReqAdminPassScore, setComplexReqAdminPassScore] = useState(userComplexReqAdminPassScore);
+    const [passwordManagementScore, setPasswordManagmentScore] = useState(userPasswordManagementScore);
+    const [onBoardingStaffScore, setOnBoardingStaffScore] = useState(userOnBoardingStaffScore);
+    const [offBoardingStaffScore, setOffBoardingStaffScore] = useState(userOffBoardingStaffScore);
+    const [systemsDataScore, setSystemsDataScore] = useState(userSystemsDataScore);
+    const [obsoleteUserScore, setObsoleteUserScore] = useState(userObsoleteUserScore);
+
+    // Placeholders
     const [placeholder, setPlaceholder] = useState(userPlaceholder);
 
 //
@@ -381,7 +485,9 @@ export const Provider = props => {
         setOtherTools,
         otherToolsDetails,
         setOtherToolsDetails,
-        // Governance
+//
+//      Governance
+//
         individualResponsible,
         setIndividualResponsible,
         responsibleDoc,
@@ -449,6 +555,60 @@ export const Provider = props => {
         crownJewls,
         setCrownJewls,
 //
+//      Training
+//
+        staffTraining,
+        setStaffTraining,
+        staffTrainingUpdates,
+        setStaffTrainingUpdates,
+        phishingTraining,
+        setPhishingTraining,
+        passwordTraining,
+        setPasswordTraining,
+        secureWorkingTraining,
+        setSecureWorkingTraining,
+        protectionTraining,
+        setProtectionTraining,
+        securityIncidentTraining,
+        setSecurityIncidentTraining,
+        emailTraining,
+        setEmailTraining,
+        socialMediaTraining,
+        setSocialMediaTraining,
+        secAware,
+        setSecAware,
+        regTraining,
+        setRegTraining,
+//
+//      IAAM
+//
+        dataRestriction,
+        setDataRestriction,
+        confidentialInfo,
+        setConfidentialInfo,
+        administratorAccess,
+        setAdministratorAccess,
+        limitAdminAccess,
+        setLimitAdminAccess,
+        adminRestriction,
+        setAdminRestriction,
+        generateAlerts,
+        setGenerateAlerts,
+        complexityReqPass,
+        setComplexityReqPass,
+        complexReqAdminPass,
+        setComplexReqAdminPass,
+        passwordManagement,
+        setPasswordManagment,
+        onBoardingStaff,
+        setOnBoardingStaff,
+        offBoardingStaff,
+        setOffBoardingStaff,
+        systemsData,
+        setSystemsData,
+        obsoleteUser,
+        setObsoleteUser,
+//
 //      Score Variables
 //
         cybAttackScore,
@@ -487,7 +647,9 @@ export const Provider = props => {
         setFacebookScore,
         instagramScore,
         setInstagramScore,
-        // Governance
+//
+//      Governance
+//
         individualResponsibleScore,
         setIndividualResponsibleScore,
         responsibleDocScore,
@@ -550,7 +712,63 @@ export const Provider = props => {
         setAsssetRegisterScore,
         crownJewlsScore,
         setCrownJewlsScore,
+//
+//      Training
+//
+        staffTrainingScore,
+        setStaffTrainingScore,
+        staffTrainingUpdatesScore,
+        setStaffTrainingUpdatesScore,
+        phishingTrainingScore,
+        setPhishingTrainingScore,
+        passwordTrainingScore,
+        setPasswordTrainingScore,
+        secureWorkingTrainingScore,
+        setSecureWorkingTrainingScore,
+        protectionTrainingScore,
+        setProtectionTrainingScore,
+        securityIncidentTrainingScore,
+        setSecurityIncidentTrainingScore,
+        emailTrainingScore,
+        setEmailTrainingScore,
+        socialMediaTrainingScore,
+        setSocialMediaTrainingScore,
+        secAwareScore,
+        setSecAwareScore,
+        regTrainingScore,
+        setRegTrainingScore,
+//
+//      IAAM
+//
+        dataRestrictionScore,
+        setDataRestrictionScore,
+        confidentialInfoScore,
+        setConfidentialInfoScore,
+        administratorAccessScore,
+        setAdministratorAccessScore,
+        limitAdminAccessScore,
+        setLimitAdminAccessScore,
+        adminRestrictionScore,
+        setAdminRestrictionScore,
+        generateAlertsScore,
+        setGenerateAlertsScore,
+        complexityReqPassScore,
+        setComplexityReqPassScore,
+        complexReqAdminPassScore,
+        setComplexReqAdminPassScore,
+        passwordManagementScore,
+        setPasswordManagmentScore,
+        onBoardingStaffScore,
+        setOnBoardingStaffScore,
+        offBoardingStaffScore,
+        setOffBoardingStaffScore,
+        systemsDataScore,
+        setSystemsDataScore,
+        obsoleteUserScore,
+        setObsoleteUserScore,
+//
 //      This is for the drop down questions that do not need scoring.
+//
         placeholder,
         setPlaceholder,
 
@@ -648,6 +866,29 @@ Provider.defaultProps = {
     incidentResponse: '',
     backupRecovery: '',
     trainingAwareness: '',
+    assetRegister: '',
+    crownJewls: '',
+//  Training
+    staffTraining: '',
+    staffTrainingUpdates: '',
+    phishingTraining: '',
+    passwordTraining: '',
+    secureWorkingTraining: '',
+    protectionTraining: '',
+    securityIncidentTraining: '',
+    emailTraining: '',
+    socialMediaTraining: '',
+    secAware: '',
+    regTraining: '',
+//  IAAM
+    dataRestriction: '',
+    confidentialInfo: '',
+    administratorAccess: '',
+    limitAdminAccess: '',
+    adminRestriction: '',
+    generateAlerts: '',
+    complexityReqPass: '',
+    passwordManagement: '',
 //  Scoring
     cybAttackScore: 0,
     cybInsCatScore: 0,
@@ -667,7 +908,7 @@ Provider.defaultProps = {
     twitterScore: 0,
     facebookScore: 0,
     instagramScore: 0,
-    // Governance
+//  Governance
     individualResponsibleScore: 0,
     responsibleDocScore: 0,
     riskRegisterScore: 0,
@@ -697,7 +938,12 @@ Provider.defaultProps = {
     incidentResponseScore: 0,
     backupRecoveryScore: 0,
     trainingAwarenessScore: 0,
-    // Placeholder
+    assetRegisterScore: 0,
+    crownJewlsScore: 0,
+//  Training
+    staffTrainingScore: 0,
+    staffTrainingUpdatesScore: 0,
+//  Placeholder
     placeholder: 0,
 };
 

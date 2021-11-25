@@ -22,8 +22,7 @@ const useStyles = makeStyles({
     }
 })
 
-
-const TabTwo = () => {
+const TabOne = () => {
     const classes = useStyles();
     const api = React.useContext(StoreContext);
 
@@ -33,11 +32,11 @@ const TabTwo = () => {
 
     return (
         <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-            {Selects("Do you run any cyber security awareness campaigns in your organisation?", classes.label, api.setSecAware, api.secAware, true, "secondary", api.setSecAwareScore)}
-            {Selects("Does training take place on a regular cycle?", classes.label, api.setRegTraining, api.regTraining, true, "secondary", api.setRegTrainingScore)}
+            {Selects("Is access to confidential systems, services and data restricted to authorised personnel?", classes.label, api.setDataRestriction, api.dataRestriction, true, "secondary", api.setDataRestrictionScore)}
+            {Selects("Is all software that provides access to confidential information inaccessible to external users?", classes.label, api.setConfidentialInfo, api.confidentialInfo, true, "secondary", api.setConfidentialInfoScore)}
         </form>
 
     )
 }
 
-export default TabTwo
+export default TabOne
