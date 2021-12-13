@@ -13,7 +13,7 @@ from .token import Decoder
 from .token import URLCreator
 
 
-class Viewthemall(generics.ListAPIView):
+class Viewthemall(generics.ListAPIView): #This is a debug view to show all Views within the Auth App
     queryset = User.objects.all()
     serializer_class = CreateUserSerial
 
@@ -54,7 +54,7 @@ class loginuser(APIView):
                     'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
                     'iat': datetime.datetime.utcnow()
                 }
-                token = jwt.encode(payload, 'secret', algorithm='HS256').decode('utf-8')
+                token = jwt.encode(payload, 'secret', algorithm='HS256')
                 response = Response()
                 response.set_cookie(key='jwt', value=token, httponly=False)
                 response.data = {
@@ -72,7 +72,7 @@ class loginuser(APIView):
 class signedin(APIView):
     def get(self, request):
         token = request.COOKIES.get('jwt')
-        print(token)
+        print(f'this is token: {token}')
         if not token:
             return HttpResponse("NO COOKIE", content_type="text/plain", status=400)
 
