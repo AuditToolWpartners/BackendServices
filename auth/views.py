@@ -23,7 +23,6 @@ class createuser(APIView):
 
     def post(self, request):
         serialzer = self.serializer_class(data=request.data)
-
         if serialzer.is_valid():
             username = serialzer.data.get('username')
             password = serialzer.data.get('password')
@@ -55,6 +54,8 @@ class loginuser(APIView):
                     'iat': datetime.datetime.utcnow()
                 }
                 token = jwt.encode(payload, 'secret', algorithm='HS256')
+                token = token[:1]
+                print(token)
                 response = Response()
                 response.set_cookie(key='jwt', value=token, httponly=False)
                 response.data = {
