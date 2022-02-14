@@ -1,8 +1,9 @@
 
 from django.urls import path, include
-from .views import cyberauditview
+from .views import questionRecive, CategoryRecive
 
 urlpatterns = [
-    path('cyberaudit/', cyberauditview.as_view()),
+    path('QuestionsRecieve/', questionRecive.as_view()),
+    path('CategoryRecieve/', CategoryRecive.as_view()),
 
 ]
