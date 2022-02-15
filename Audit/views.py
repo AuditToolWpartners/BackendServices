@@ -2,6 +2,7 @@
 
 # Create your views here.
 from re import S
+from httplib2 import Response
 import jwt
 from django.http import JsonResponse
 from django.core import serializers
@@ -9,7 +10,7 @@ from rest_framework.views import APIView
 from django.http import HttpResponse
 from .models import (Category, Question, Answer)
 from django.contrib.auth.models import User
-from .serializers import(QuestionSender, AnswerSerial)
+from .serializers import(QuestionSender, AnswerSerial, QuestionNistSerializer)
 from rest_framework.response import Response as Rs
 
 class questionRecive(APIView):
@@ -120,13 +121,25 @@ class AnswerSend(APIView):
         if answerinstance.is_valid():
             AnswerInput = answerinstance.validated_data.get('AnswerInput')
             Question = answerinstance.validated_data.get('Question')
-
+            print('completed')
+        else:
+            Response = HttpResponse('Gsfsdf')
+            return Response
+        try:
             model = Answer(AnswerInput=AnswerInput, Question=Question, userLink=userid)
             model.save()
+            return HttpResponse("Model Saved")
+        except Exception as e:
+            print(e)
+            return HttpResponse(e)
+        print('here')
+        Response = HttpResponse('Ffsdfsdf')
+        return Response
 
         
 class UserScore(APIView):
-    AnswerSerial = AnswerSerial
+    NistSerial = QuestionNistSerializer
+    @staticmethod
     def authcall(request):
         token = request.COOKIES.get('jwt')
         if not token:
@@ -140,15 +153,17 @@ class UserScore(APIView):
         user = User.objects.get(id=data['id'])
         print(user)
         return user
-    
-    def post(self, request):
-        ScoreTotal = 0
-        answerserialinstance = self.AnswerSerial(data=request.data)
-        if answerserialinstance.is_valid():
-            QuestionNist = answerserialinstance.validated_data.get('QuestionNist')
 
+
+    def get(self, request):
         userid = self.authcall(request)
+        ScoreTotal = 0
+        NistSerial = self.NistSerial(data=request.data)
+        if NistSerial.is_valid():
+            QuestionNist = NistSerial.validated_data.get('QuestionNist')
 
+        else:
+            return HttpResponse('Invalid')
 
         #Fitler answers first by user ID
         #Then filter by answer.Question.QuestionNist - Get Catigory from Request
@@ -157,6 +172,7 @@ class UserScore(APIView):
         for answer in UsersAnswers.iterator():
             if answer.Question.QuestionNist == QuestionNist:
                 ScoreTotal +=  answer.Question.questionScore
+
 
         Response = HttpResponse(ScoreTotal)
         return Response

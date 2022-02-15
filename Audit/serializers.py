@@ -1,3 +1,4 @@
+from dataclasses import field
 from rest_framework import serializers
 from .models import(Question, Answer)
 
@@ -11,6 +12,7 @@ class QuestionSender(serializers.Serializer):
 class AnswerSerial(serializers.ModelSerializer):
     class Meta:
         model = Answer
-    
-    
-    
+        fields = ('AnswerInput', 'Question')
+
+class QuestionNistSerializer(serializers.Serializer):
+    QuestionNist = serializers.CharField(max_length=30)
