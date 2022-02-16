@@ -32,8 +32,11 @@ class questionRecive(APIView):
         print(user)
         return user
 
-    def get(self, request):
-        userid = self.authcall(request)
+    def post(self, request):
+        try:
+            userid = self.authcall(request)
+        except:
+            return HttpResponse('Client not Logged in')
 
         QuestionSenderInstance = self.QuestionSender(data=request.data)
 
@@ -114,8 +117,11 @@ class AnswerSend(APIView):
         print(user)
         return user
 
-    def get(self, request):
-        userid = self.authcall(request)
+    def post(self, request):
+        try:
+            userid = self.authcall(request)
+        except:
+            return HttpResponse("Client not Logged in", content_type="text/plain")
         answerinstance = self.AnswerSerial(data=request.data)
 
         if answerinstance.is_valid():
@@ -155,8 +161,12 @@ class UserScore(APIView):
         return user
 
 
-    def get(self, request):
-        userid = self.authcall(request)
+    def post(self, request):
+        try:
+
+            userid = self.authcall(request)
+        except:
+            return HttpResponse("Client not Logged in", content_type="text/plain")
         ScoreTotal = 0
         NistSerial = self.NistSerial(data=request.data)
         if NistSerial.is_valid():
