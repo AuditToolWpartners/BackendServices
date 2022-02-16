@@ -77,11 +77,11 @@ class questionRecive(APIView):
 
             print(questionnumber)
 
-            SelectedQuestion = Question.objects.all() #change this to fitler, switch to pk
+            SelectedQuestion = Question.objects.filter(pk=questionnumber) #change this to fitler, switch to pk
             print(SelectedQuestion,'dfsdfsdfsdfsdf')
             try:
 
-                Squestion = serializers.serialize("json", SelectedQuestion[questionnumber-1:questionnumber])
+                Squestion = serializers.serialize("json", SelectedQuestion)
                 return HttpResponse(Squestion)
             except:
                 Response = HttpResponse('No question in range of index')
