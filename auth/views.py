@@ -53,7 +53,7 @@ class loginuser(APIView):
                     'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
                     'iat': datetime.datetime.utcnow()
                 }
-                token = jwt.encode(payload, 'secret', algorithm='HS256').decode('utf-8')
+                token = jwt.encode(payload, 'secret', algorithm='HS256').decode('utf-8') #REMOVE ME FOR DEPLOY
                 print(token)
                 response = Response()
                 response.set_cookie(key='jwt', value=token, httponly=False)

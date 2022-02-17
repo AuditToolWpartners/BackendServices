@@ -58,9 +58,12 @@ class questionRecive(APIView):
             for answers in AnswerQuery.iterator():
                 print(f'{answers} HERE THING')
                 questionid = QuestionSenderInstance.validated_data.get('QuestionNumber')
+                QuestionFound = Question.objects.values()
+                QuestionFoundnum = QuestionFound[questionnumber]
+                questiontwo = QuestionFoundnum["id"]
                 print(f'{answers.Question.id} adsad')
                 print(questionid)
-                if answers.Question.id == questionid:
+                if answers.Question.id == questiontwo:
                     print(answers, 'HEREHERE')
                     data = serializers.serialize("json", Answer.objects.filter(pk=answers.id))
                     print('wrfmsdm')
@@ -69,7 +72,7 @@ class questionRecive(APIView):
 
 
             try:
-                QuestionObject = Question.objects.filter(Category=CategoryID).values()
+                QuestionObject = Question.objects.filter(Category=CategoryID)
                 print(QuestionObject)
             except:
                 Response = HttpResponse("No QUestions Within Category", content_type="text/plain")
@@ -77,11 +80,11 @@ class questionRecive(APIView):
 
             print(questionnumber)
 
-            SelectedQuestion = Question.objects.filter(pk=questionnumber) #change this to fitler, switch to pk
-            print(SelectedQuestion,'dfsdfsdfsdfsdf')
+            #SelectedQuestion = Question.objects.filter(pk=questionnumber) #change this to fitler, switch to pk
+            print('dfsdfsdfsdfsdf')
             try:
 
-                Squestion = serializers.serialize("json", SelectedQuestion)
+                Squestion = serializers.serialize("json", QuestionObject[questionnumber-1:questionnumber])
                 return HttpResponse(Squestion)
             except:
                 Response = HttpResponse('No question in range of index')
