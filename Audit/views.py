@@ -12,6 +12,7 @@ from .models import (Category, Question, Answer)
 from django.contrib.auth.models import User
 from .serializers import(QuestionSender, AnswerSerial, QuestionNistSerializer)
 from rest_framework.response import Response as Rs
+import json
 
 class questionRecive(APIView):
     QuestionSender = QuestionSender
@@ -59,7 +60,7 @@ class questionRecive(APIView):
                 print(f'{answers} HERE THING')
                 questionid = QuestionSenderInstance.validated_data.get('QuestionNumber')
                 QuestionFound = Question.objects.values()
-                QuestionFoundnum = QuestionFound[questionnumber]
+                QuestionFoundnum = QuestionFound[questionnumber-1]
                 questiontwo = QuestionFoundnum["id"]
                 print(f'{answers.Question.id} adsad')
                 print(questionid)
@@ -68,7 +69,8 @@ class questionRecive(APIView):
                     data = serializers.serialize("json", Answer.objects.filter(pk=answers.id))
                     print('wrfmsdm')
                     data2 = serializers.serialize("json", Question.objects.filter(pk=questionid))
-                    return HttpResponse(data + "," + data2)
+                    ResponseData = data+","+data2
+                    return HttpResponse(json.dumps(ResponseData), mimetype="application/json")
 
 
             try:
